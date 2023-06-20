@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Post a Job</title>
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: left;
+            margin-top: 0;
+            color: #df5e0e;
+            font-size: 30px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: inline-block;
+            margin-top: 10px;
+            width: 120px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            display: inline-block;
+            width: 80%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="file"] {
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        #type input[type="radio"],
+        #type label {
+           display: inline;
+           vertical-align: middle;
+           margin-left: 100px;
+        }
+        #category input[type="radio"],
+        #category label {
+           display: inline;
+           vertical-align: middle;
+           margin-left: 100px;
+        }
+        #headline{
+            border-color: #a94442;
+        }
+        a {
+            text-decoration: none;
+        }
+        #submission{
+            display: inline-block;
+            white-space: nowrap;
+            position: relative;
+            left:-123px;
+            top: 16px;
+        }
+        #employer-name{
+            position: relative;
+            top: -6px;
+            border-color: #a94442;
+        }
+        #single-line{
+            margin-left: 140px;
+            color: #a94442;;
+        }
+        .relocation-class{
+            display: inline-block;
+            white-space: nowrap;
+            position: relative;
+            right: -125px;
+        }
+        #relocation{
+            position: relative;
+            right: -227px;
+        }
+        .perks{
+            position: relative;
+            left: 150px;
+            display: inline-block;
+            white-space: nowrap;
+        }
+        .equity-class{
+            position: relative;
+            left: 155px;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+  <h1>Post a Job</h1>
+
+  <form method="POST" th:action="@{/post-job}">
+    <p>Hasjob is visited by thousands of developers every month. Posts are valid for 30 days.</p>
+    <p><b>Attention, recruiters:</b> You may NOT use this site to post jobs on behalf of your clients. We accept posts for your own firm only. Please read the <a href="https://hasjob.co/tos">terms of service</a> and ask your clients to list for themselves.</p>
+    <h2 style="color: #816894;">First, tell us about the position</h2>
+    <label for="headline" style= "color:#a94442;font-weight: bold;">Headline:</label>
+    <input type="text" id="headline" name="headline" required><br>
+    <p id="single-line">A single-line summary. This goes to the front page and across the network. <a>A/B test it?</a></p>
+    <label for="type" style="font-weight: bold; position: relative; top:45px">Type:</label>
+    <ul id="type">
+      <input type="radio" id="type-full-time" name="type" value="Full-time employment" required>Full-time employment<br>
+      <input type="radio" id="type-short-term" name="type" value="Short-term contract">Short-term contract<br>
+      <input type="radio" id="type-internship" name="type" value="Internship">Internship<br>
+      <input type="radio" id="type-freelance" name="type" value="Freelance or consulting">Freelance or consulting<br>
+      <input type="radio" id="type-volunteer" name="type" value="Volunteer contributor">Volunteer contributor<br>
+      <input type="radio" id="type-partner" name="type" value="Partner for a venture">Partner for a venture<br>
+    </ul>
+
+    <label for="category" style="font-weight: bold; position: relative; top:45px">Category:</label>
+    <ul id="category">
+      <input type="radio" id="category-programming" name="category" value="Programming" required>Programming<br>
+      <input type="radio" id="category-interaction-design" name="category" value="Interaction Design">Interaction Design<br>
+      <input type="radio" id="category-graphic-design" name="category" value="Graphic Design">Graphic Design<br>
+      <input type="radio" id="category-electronics" name="category" value="Electronics">Electronics<br>
+      <input type="radio" id="category-information-security" name="category" value="Information Security">Information Security<br>
+      <input type="radio" id="category-testing-qa" name="category" value="Testing/Quality Assurance">Testing/Quality Assurance<br>
+      <input type="radio" id="category-it-admin" name="category" value="IT/Systems Administration">IT/Systems Administration<br>
+      <input type="radio" id="category-business-management" name="category" value="Business/Management">Business/Management<br>
+      <input type="radio" id="category-writer-editor" name="category" value="Writer/Editor">Writer/Editor<br>
+      <input type="radio" id="category-customer-support" name="category" value="Customer Support">Customer Support<br>
+      <input type="radio" id="category-mobile" name="category" value="Mobile (iPhone, Android, other)">Mobile (iPhone, Android, other)<br>
+      <input type="radio" id="category-office-admin" name="category" value="Office Administration"> Office Administration<br>
+    </ul>
+
+    <label for="location" class = "location-class" style="font-weight: bold;">Location:</label>
+    <input type="text" id="location" name="location" required>
+    <p style="margin-left: 130px; color: #999292; font-size:medium;">“Bangalore”, “Chennai”, “Pune”, etc or “Anywhere” (without quotes)</p>
+
+    <label for="relocation" class = "relocation-class">Relocation assistance available:</label>
+    <input type="checkbox" id="relocation" name="relocation"><br><br>
+
+    <label for="description" style="font-weight: bold;position: relative; top:-31px;">Description:</label>
+    <textarea id="description" name="description" rows="5" cols="30" required></textarea>
+    <p style="margin-left: 130px; color: #999292; font-size:medium;">Don’t just describe the job, tell a compelling story for why someone should work for you</p>
+    <label for="perks" class="perks">Job perks are available:</label>
+    <input type="checkbox" id="perks" name="perks"><br>
+    <label for="description" style="font-weight: bold;position: relative; top:-31px;">Description:</label>
+    <textarea id="perksdescription" name="perksdescription" rows="5" cols="30" required></textarea>
+
+    <label for="pay"><b>What does this job pay?:</b></label>
+    <input type="radio" id="pay-nothing" name="pay" value="Nothing" required>
+    <label for="pay-nothing">Nothing</label>
+    <input type="radio" id="pay-one-time" name="pay" value="One-time">
+    <label for="pay-one-time">One-time</label>
+    <input type="radio" id="pay-recurring" name="pay" value="Recurring">
+    <label for="pay-recurring">Recurring</label><br>
+    <input type="number" id="salary" name="salary">
+
+    <label for="equity" class="equity-class">Equity compensation is available</label>
+    <input type="checkbox" id="equity" name="equity">
+    <p style="margin-left: 130px; color: #999292; font-size:medium;">Candidates can’t see what this job pays, but can search for jobs matching their expected pay scale</p>
+
+    <label for="submission" style="display: inline-block; white-space: nowrap; position:relative;top:-13px">What should a candidate submit when applying for this job?:</label>
+    <input type="text" id="submission" name="submission" required>
+
+    <h2 style="color :#816894;position: relative; top:16px">Next, tell us about your organization
+    </h2>
+    <label for="employer-name" style= "color:#a94442;font-weight: bold;" >Employer name:</label>
+    <input type="text" id="employer-name" name="employer-name" required>
+
+    <label for="logo" style="font-weight: bold;">Logo:</label>
+    <input type="file" id="logo" name="logo"><br>
+
+    <label for="url" style="font-weight: bold; position: relative; top:8px;">URL:</label>
+    <input type="text" id="url" name="url" style="position: relative;top: 8px" required><br>
+
+    <label for="email" style="font-weight: bold; position: relative; top: 12px;">Email:</label>
+    <input type="email" id="email" name="email" style="position: relative;top:13px" required><br>
+
+    <label for="collaborators" style="font-weight: bold; position: relative; top: 12px;">Collaborators:</label>
+    <input type="text" id="collaborators" name="collaborators" style="position:relative;top:16px;">
+    <label for="recruiters" style="position: relative; top:9px; display: inline-block;white-space: nowrap;">Is it okay for recruiters and other intermediaries to contact you about this post?</label><br>
+    <input type="radio" id="recruiters-no" name="recruiters" value="No" required>
+    <label for="recruiters-no">No, it is NOT OK</label><br>
+    <input type="radio" id="recruiters-yes" name="recruiters" value="Yes">
+    <label for="recruiters-yes">Yes, recruiters may contact me</label><br>
+
+    <input type="submit" value="Review your post...">
+  </form>
+</div>
+</body>
+</html>

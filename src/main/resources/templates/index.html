@@ -1,0 +1,235 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--    <style>-->
+<!--    .header {-->
+<!--      background-color: #f2f2f2;-->
+<!--      padding: 20px;-->
+<!--    }-->
+
+<!--    .logo {-->
+<!--      max-width: 100px;-->
+<!--      height: 30px;-->
+<!--    }-->
+<!--  </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="header">-->
+<!--    <header>-->
+<!--        <div>-->
+<!--            <div>-->
+<!--                <img class="logo" src="hasjob-logo.png" alt="Logo">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </header>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+.container {
+  background: #ebe7e4;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+  min-height: 62px;
+  padding: 0px;
+  margin: 0;
+  width: 100vw;
+  max-width: 100%;
+}
+
+@media (min-width: 600px) {
+  .container {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Add some spacing between the text */
+}
+
+.right-section {
+  float: right;
+}
+
+.text {
+  margin: 0;
+  padding: 0;
+}
+
+.button {
+  margin-left: 10px;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.button.login {
+  margin-left: 10px;
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+.button {
+  margin-left: 10px;
+  background-color: #816894;
+  border-color: #816894;
+  border-bottom-color: rgb(129, 104, 148);
+  border-bottom: 2px solid #554562;
+  color: #fff; /* Add text color to ensure visibility */
+}
+.logo {
+max-width: 100px;
+ height: 33px;
+ }
+
+</style>
+
+</head>
+<body>
+<div class="container">
+    <div class="left-section">
+        <div style="position:relative;left:335px;top:2px">
+            <img src="hasjob-logo.png" alt="HasJob Logo" class="logo">
+        </div>
+
+        <div style="
+    position: relative;
+    left: 335px;
+    top: 1px;
+    width: 60px;
+">
+            <p class="text" style="color:rgb(223,94,14);font-size:18px; font-weight:bold;">HasJob</p>
+        </div>
+        <div style="color:purple;position:relative;left:335px;font-weight:bold;">
+            <p class="text">The Hasgeek Job Board</p>
+        </div>
+
+
+    </div>
+    <div class="right-section">
+        <div style="
+    left: -426px;
+    position: relative;
+    top: -30px;
+">
+            <a th:href="@{/new}">
+                <button class="button">Post a Job</button>
+            </a>
+
+        </div>
+        <div style="
+    position: relative;
+    tab-size: -20px;
+    top: -51px;
+    left: -340px;
+">
+            <a th:href="@{/login}">
+                <button class="button login">Login</button>
+            </a>
+        </div>
+
+    </div>
+    <div class="clearfix">
+        <form style="display:flex;justify-content:center;">
+            <div style="position:relative;top:2px;left:-62px;">
+                <select id="location" name="location" style="width:188px;height:32px">
+                    <option value="">Location</option>
+                    <option value="mysore">Mysore</option>
+                    <option value="bengaluru">Bengaluru</option>
+                    <option value="mumbai">Mumbai</option>
+                </select>
+            </div>
+            <div style="position:relative;top:2px;left:-31px;">
+                <select id="type" name="type" style="width:188px;height:32px">
+                    <option value="">Type</option>
+                    <option value="fulltime">Full-time</option>
+                    <option value="parttime">Part-time</option>
+                    <option value="internship">Internship</option>
+                </select>
+            </div>
+            <div style="position:relative;top:2px;left:-1px;">
+                <select id="category" name="category" style="width:188px;height:32px">
+                    <option value="">Category</option>
+                    <option value="programming">Programming</option>
+                    <option value="integration">Integration</option>
+                    <option value="graphicdesign">Graphic Design</option>
+                </select>
+            </div>
+            <div style="position:relative;top:2px;left:24px;">
+                <select id="pay" name="paying" style="width:188px;height:32px">
+                    <option value="">Category</option>
+                    <option value="programming">Programming</option>
+                    <option value="integration">Integration</option>
+                    <option value="graphicdesign">Graphic Design</option>
+                </select>
+            </div>
+            <div style="position:relative;top:2px;left:24px;">
+               <form th:action="@{/search}">
+                   <input type="text" name="search" style="position:relative;left:129px;height:25px" placeholder="search">
+               </form>
+            </div>
+        </form>
+
+    </div>
+
+    <div id="jobContainer">
+
+
+    </div>
+
+    <!-- Include any necessary JavaScript code -->
+    <script th:inline="javascript">
+  // Event listener for location filter
+  document.getElementById('location').addEventListener('change', function() {
+    var location = this.value;
+    filterJobs(location);
+  });
+
+  // Event listener for type filter
+  document.getElementById('type').addEventListener('change', function() {
+    var location = document.getElementById('location').value;
+    var type = this.value;
+    filterJobs(location, type);
+  });
+
+  // Event listener for category filter
+  document.getElementById('category').addEventListener('change', function() {
+    var location = document.getElementById('location').value;
+    var type = document.getElementById('type').value;
+    var category = this.value;
+    filterJobs(location, type, category);
+  });
+
+  // Event listener for pay filter
+  var payRadios = document.querySelectorAll('input[name="pay"]');
+  payRadios.forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      var location = document.getElementById('location').value;
+      var type = document.getElementById('type').value;
+      var category = document.getElementById('category').value;
+      var pay = this.value;
+      filterJobs(location, type, category, pay);
+    });
+  });
+
+  function filterJobs(location, type, category, pay) {
+    // Implement your filtering logic here based on the selected criteria
+    // Update the displayed jobs accordingly
+  }
+
+    </script>
+
+</div>
+
+</body>
+</html>
