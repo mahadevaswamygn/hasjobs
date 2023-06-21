@@ -34,6 +34,10 @@ public class JobController {
     public String home(Model model){
         List<Job> allJobs=jobService.findAllJobs();
         model.addAttribute("allJobs",allJobs);
+        List<String> allLocations=jobService.findAllLocations();
+        model.addAttribute("allLocations",allLocations);
+        List<String> allTypes=jobService.findAllJobTypes();
+        model.addAttribute("allTypes",allTypes);
         return "index";
     }
 
@@ -107,6 +111,22 @@ public class JobController {
         model.addAttribute("searchedJobs",searchedJobs);
         model.addAttribute("searchQuery", searchQuery);
         return "searched";
+    }
+
+    @GetMapping(value = "/filter")
+    public String filter(@RequestParam(value = "location",required = false)String location,
+                         @RequestParam(value = "type" ,required = false)String type,
+                         @RequestParam(value = "category",required = false)String category,
+                         Model model){
+
+        List<Job> filteredJobs=jobService.filterJobs(location,type,category);
+        System.out.println(filteredJobs);
+        model.addAttribute("filteredJobs",filteredJobs);
+        List<String> allLocations=jobService.findAllLocations();
+        model.addAttribute("allLocations",allLocations);
+        List<String> allTypes=jobService.findAllJobTypes();
+        model.addAttribute("allTypes",allTypes);
+        return "filtered";
     }
 
 }

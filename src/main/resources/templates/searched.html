@@ -108,6 +108,7 @@ max-width: 100px;
 
 
 
+
     </style>
 
 </head>
@@ -192,7 +193,7 @@ max-width: 100px;
             <div style="position:relative;top:2px;left:24px;">
                 <form th:action="@{/search}">
                     <input type="text" name="search" style="position:relative;left:129px;height:25px"
-                           placeholder="search">
+                           placeholder="search" th:value="${searchQuery}">
                 </form>
             </div>
         </form>

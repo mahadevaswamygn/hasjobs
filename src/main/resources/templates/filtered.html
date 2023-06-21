@@ -1,32 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Title</title>-->
-<!--    <style>-->
-<!--    .header {-->
-<!--      background-color: #f2f2f2;-->
-<!--      padding: 20px;-->
-<!--    }-->
-
-<!--    .logo {-->
-<!--      max-width: 100px;-->
-<!--      height: 30px;-->
-<!--    }-->
-<!--  </style>-->
-<!--</head>-->
-<!--<body>-->
-<!--<div class="header">-->
-<!--    <header>-->
-<!--        <div>-->
-<!--            <div>-->
-<!--                <img class="logo" src="hasjob-logo.png" alt="Logo">-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </header>-->
-<!--</div>-->
-<!--</body>-->
-<!--</html>-->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -137,6 +108,8 @@ max-width: 100px;
 
 
 
+
+
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -218,17 +191,15 @@ max-width: 100px;
             <button type="submit" id="submitButton" style="display:none;"></button>
         </form>
         <script>
-        // Function to automatically submit the form
         function autoSubmitForm() {
-            // Submit the form by triggering the submit button click event
             $('#submitButton').click();
         }
-
-        // Listen for change event on select elements
         $('#location, #type, #category, #pay').on('change', function() {
             autoSubmitForm(); // Call the autoSubmitForm function
         });
-    </script>
+
+
+        </script>
         <div style="position:relative;top:2px;left:24px;">
             <form th:action="@{/search}">
                 <input type="text" name="search" style="position:relative;left:1276px;top:-31px;height:25px"
@@ -237,64 +208,10 @@ max-width: 100px;
         </div>
 
     </div>
-
-    <div id="jobContainer">
-
-
-    </div>
-
-    <!-- Include any necessary JavaScript code -->
-    <script th:inline="javascript">
-  // Event listener for location filter
-  document.getElementById('location').addEventListener('change', function() {
-    var location = this.value;
-    filterJobs(location);
-  });
-
-  // Event listener for type filter
-  document.getElementById('type').addEventListener('change', function() {
-    var location = document.getElementById('location').value;
-    var type = this.value;
-    filterJobs(location, type);
-  });
-
-  // Event listener for category filter
-  document.getElementById('category').addEventListener('change', function() {
-    var location = document.getElementById('location').value;
-    var type = document.getElementById('type').value;
-    var category = this.value;
-    filterJobs(location, type, category);
-  });
-
-  // Event listener for pay filter
-  var payRadios = document.querySelectorAll('input[name="pay"]');
-  payRadios.forEach(function(radio) {
-    radio.addEventListener('change', function() {
-      var location = document.getElementById('location').value;
-      var type = document.getElementById('type').value;
-      var category = document.getElementById('category').value;
-      var pay = this.value;
-      filterJobs(location, type, category, pay);
-    });
-  });
-
-  function filterJobs(location, type, category, pay) {
-    // Implement your filtering logic here based on the selected criteria
-    // Update the displayed jobs accordingly
-  }
-
-
-
-
-
-
-    </script>
-
 </div>
-
 <div class="jobs-display">
     <div class="row">
-        <div th:each="job, status:${allJobs}" class="job-card" style="min-width: 40px;">
+        <div th:each="job, status:${filteredJobs}" class="job-card" style="min-width: 40px;">
             <div>
                 <a th:href="@{/show-job/{id}(id=${job.id})}" style="text-decoration: none;">
                     <div class="job-card-header">
@@ -313,7 +230,5 @@ max-width: 100px;
         </div>
     </div>
 </div>
-
-
 </body>
 </html>
