@@ -5,10 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -27,7 +25,9 @@ public class Job {
     private String location;
     private String description;
     private String jobPerks;
+    private String poster;
     private int salary;
+    private Date postedDate;
 
     @ManyToOne(targetEntity = Company.class)
     @JoinColumn(name = "company_id")

@@ -3,7 +3,6 @@ package com.example.hasjobs.controller;
 import com.example.hasjobs.entity.Company;
 import com.example.hasjobs.entity.Employee;
 import com.example.hasjobs.entity.Job;
-import com.example.hasjobs.entity.JobForm;
 import com.example.hasjobs.service.CompanyService;
 import com.example.hasjobs.service.EmployeeService;
 import com.example.hasjobs.service.JobService;
@@ -16,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -29,6 +29,13 @@ public class JobController {
 
     @Autowired
     CompanyService companyService;
+
+    @GetMapping(value = "/home")
+    public String home(Model model){
+        List<Job> allJobs=jobService.findAllJobs();
+        model.addAttribute("allJobs",allJobs);
+        return "index";
+    }
 
 
     @PostMapping(value = "/post-job")
@@ -53,14 +60,12 @@ public class JobController {
                          RedirectAttributes redirectAttributes,
                          Model model) {
         Employee employee=new Employee();
-        employee.setName(employerName);
+        employee.setName("lahari");
         employee.setEmail(email);
         Employee employee1= employeeService.save(employee);
-
         Company company=new Company();
-        company.setName(extractCompanyName(url));
+        company.setName(employerName);
         company.setUrl(url);
-        System.out.println(logo);
         byte[] logoBytes = null;
         if (logo != null && !logo.isEmpty()) {
             try {
@@ -76,8 +81,6 @@ public class JobController {
         company.setEmployee(employeeList);
         company.setEmail(email);
         Company company1=companyService.save(company);
-
-
         Job job=new Job();
         job.setHeadline(headline);
         job.setType(type);
@@ -86,26 +89,24 @@ public class JobController {
         job.setJobPerks(perksDescription);
         job.setSalary(salary);
         job.setCompany(company1);
+        job.setPoster("lahari");
+        job.setPostedDate(new Date());
         jobService.saveJob(job);
-
-
-
-        return "home";
-    }
-    public String extractCompanyName(String url) {
-        String trimmedUrl = url.replaceAll("www\\.", "").replaceAll("\\.com", "");
-        return trimmedUrl;
-    }
-
-    @GetMapping(value = "/home")
-    public String home(){
-        return "index";
+        return "redirect:/home";
     }
 
     @GetMapping(value = "/new")
     public String newJob()
     {
         return "post-job";
+    }
+
+    @GetMapping("/search")
+    public String handleSearchRequest(@RequestParam("search") String searchQuery,Model model) {
+        List<Job> searchedJobs=jobService.searchJobs(searchQuery);
+        model.addAttribute("searchedJobs",searchedJobs);
+        model.addAttribute("searchQuery", searchQuery);
+        return "searched";
     }
 
 }
