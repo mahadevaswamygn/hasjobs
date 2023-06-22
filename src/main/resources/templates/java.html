@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Java Interview Question</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+
+    h2 {
+      color: #333;
+      margin-top: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+    .header{
+        margin-left: 200px;
+        max-width: 900px;
+        border: solid 1px black;
+        padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<a th:href="@{/home}"> Home </a>
+<div class="header">
+  <h1>Java InterView Question</h1>
+  <div class="question">
+    <h2 class="question-title">Question 1: What is Java?</h2>
+    <div class="answer">
+      <p>Java is a high-level, object-oriented programming language developed by Sun Microsystems. It is widely used for building a variety of applications, ranging from desktop to web and mobile applications.</p>
+    </div>
+  </div>
+  <div class="question">
+    <h2 class="question-title">Question 2: What is the difference between a class and an object?</h2>
+    <div class="answer">
+      <p>A class is a blueprint or template that defines the structure and behavior of objects. It encapsulates data and methods that operate on that data. An object, on the other hand, is an instance of a class. It represents a specific entity and can be created and manipulated at runtime.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 3: What is the difference between JDK and JRE?</h2>
+    <div class="answer">
+      <p>JDK (Java Development Kit) is a software development environment used for developing Java applications. It includes the Java compiler, debugger, and other development tools. JRE (Java Runtime Environment), on the other hand, is a runtime environment that is needed to run Java applications. It includes the Java Virtual Machine (JVM) and necessary libraries.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 4: Explain the concept of inheritance in Java.</h2>
+    <div class="answer">
+      <p>Inheritance is a mechanism in Java that allows a class to inherit properties and methods from another class. The class that inherits the properties is called the subclass or derived class, and the class from which it inherits is called the superclass or base class. Inheritance promotes code reuse and enables the creation of a hierarchical class structure.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 5: What is the difference between method overloading and method overriding?</h2>
+    <div class="answer">
+      <p>Method overloading occurs when multiple methods in the same class have the same name but different parameters. The compiler determines which method to invoke based on the number and types of arguments passed to the method.</p>
+      <p>Method overriding, on the other hand, happens when a subclass provides a different implementation of a method that is already defined in its superclass. The method in the subclass must have the same name, return type, and parameters as the method in the superclass.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 6: What is the purpose of the 'static' keyword in Java?</h2>
+    <div class="answer">
+      <p>The 'static' keyword is used to define class-level variables, methods, and blocks. When a variable or method is declared as static, it belongs to the class rather than an instance of the class. Static members can be accessed directly using the class name, without creating an object of the class.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 7: What is the difference between checked and unchecked exceptions?</h2>
+    <div class="answer">
+      <p>Checked exceptions are exceptions that must be declared in a method or caught using a try-catch block. They are checked by the compiler at compile-time to ensure that they are properly handled. Examples of checked exceptions include IOException and SQLException.</p>
+      <p>Unchecked exceptions, also known as runtime exceptions, do not need to be declared or caught. They are not checked by the compiler and can occur at runtime. Examples of unchecked exceptions include NullPointerException and ArrayIndexOutOfBoundsException.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 8: What is the difference between String, StringBuilder, and StringBuffer?</h2>
+    <div class="answer">
+      <p>String is an immutable class, which means its value cannot be changed once it is created. StringBuilder and StringBuffer, on the other hand, are mutable classes that can be used to manipulate strings.</p>
+      <p>StringBuilder is not thread-safe and is more efficient than StringBuffer in single-threaded environments. StringBuffer, on the other hand, is thread-safe but less efficient due to the overhead of synchronization. StringBuilder should be used when thread safety is not required, while StringBuffer is preferred in multithreaded scenarios.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 9: What is the difference between final, finally, and finalize in Java?</h2>
+    <div class="answer">
+      <p>The 'final' keyword is used to declare a variable, method, or class that cannot be changed or extended. Once a variable is declared as final, its value cannot be modified, a final method cannot be overridden, and a final class cannot be subclassed.</p>
+      <p>The 'finally' block is used in exception handling to define a block of code that will be executed regardless of whether an exception is thrown or caught. It is often used to release resources or perform cleanup tasks.</p>
+      <p>'finalize' is a method defined in the Object class that is called by the garbage collector before an object is destroyed. It can be overridden to provide custom cleanup code for an object.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 10: What are the access modifiers in Java?</h2>
+    <div class="answer">
+      <p>Java provides four access modifiers:</p>
+      <ul>
+        <li>public: The member can be accessed from any other class or package.</li>
+        <li>protected: The member can be accessed from within the same class, subclass, or package.</li>
+        <li>default: The member can be accessed from within the same package only (no explicit modifier is used).</li>
+        <li>private: The member can be accessed from within the same class only.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 11: What is the difference between stack and heap memory?</h2>
+    <div class="answer">
+      <p>Stack memory is used for storing local variables and method calls. It is organized in a Last-In-First-Out (LIFO) manner and is automatically allocated and deallocated by the compiler as methods are called and completed.</p>
+      <p>Heap memory, on the other hand, is used for dynamic memory allocation. It is the area where objects are stored and managed. Objects in the heap are allocated and deallocated manually using the 'new' and 'delete' keywords or are automatically managed by the garbage collector.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 12: What is the Java Virtual Machine (JVM)?</h2>
+    <div class="answer">
+      <p>The Java Virtual Machine (JVM) is a virtual machine that executes Java bytecode. It provides an environment in which Java programs can be executed independently of the underlying hardware and operating system.</p>
+      <p>The JVM is responsible for various tasks, including memory management, garbage collection, bytecode interpretation, and dynamic class loading.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 13: What is the difference between the stack and the heap in the context of JVM?</h2>
+    <div class="answer">
+      <p>In the context of JVM:</p>
+      <ul>
+        <li>The stack is used for storing local variables and method calls. It is thread-specific and contains method frames.</li>
+        <li>The heap is used for storing objects and is shared among all threads. It is managed by the garbage collector.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 14: What is a constructor in Java?</h2>
+    <div class="answer">
+      <p>A constructor in Java is a special method that is used to initialize objects. It is called automatically when an object is created using the 'new' keyword. Constructors have the same name as the class and do not have a return type.</p>
+      <p>Constructors can be used to set initial values to object properties, perform necessary setup tasks, and ensure that the object is in a valid state upon creation.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 15: What is the difference between an instance variable and a static variable?</h2>
+    <div class="answer">
+      <p>An instance variable is a variable that is associated with instances of a class. Each instance of the class has its own copy of the instance variable. Instance variables are declared without the 'static' keyword and can have different values for each object.</p>
+      <p>A static variable, on the other hand, is a variable that belongs to the class itself rather than instances of the class. There is only one copy of a static variable, shared by all objects of the class. Static variables are declared with the 'static' keyword and are initialized once, regardless of the number of objects created.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 16: What is method overriding in Java?</h2>
+    <div class="answer">
+      <p>Method overriding is a feature in Java that allows a subclass to provide a different implementation of a method that is already defined in its superclass. The method in the subclass must have the same name, return type, and parameters as the method in the superclass.</p>
+      <p>By overriding a method, a subclass can customize the behavior of the inherited method according to its specific requirements. Method overriding is an example of runtime polymorphism.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 17: What is a package in Java?</h2>
+    <div class="answer">
+      <p>A package in Java is a way of organizing related classes and interfaces into a single namespace. It provides a mechanism for grouping related classes, preventing naming conflicts, and controlling access to classes and their members.</p>
+      <p>Packages are hierarchical, meaning that they can contain sub-packages. They also provide access control through the use of access modifiers like 'public', 'protected', 'private', and 'default'.</p>
+    </div>
+  </div>
+  <div class="question">
+    <h2 class="question-title">Question 18: What are the different types of loops available in Java?</h2>
+    <div class="answer">
+      <p>Java provides the following types of loops:</p>
+      <ul>
+        <li>for loop: Used for executing a block of code repeatedly for a specific number of times.</li>
+        <li>while loop: Executes a block of code repeatedly as long as a condition is true.</li>
+        <li>do-while loop: Similar to the while loop, but the block of code is executed at least once, even if the condition is false.</li>
+        <li>enhanced for loop (for-each loop): Used for iterating over elements of an array or a collection.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="question">
+    <h2 class="question-title">Question 19: What is multithreading in Java?</h2>
+    <div class="answer">
+      <p>Multithreading in Java refers to the concurrent execution of multiple threads within a single program. Threads are independent paths of execution that can run simultaneously, allowing for better utilization of system resources and increased responsiveness in applications.</p>
+    </div>
+  </div>
+  <div class="question">
+    <h2 class="question-title">Question 20: What is the difference between processes and threads?</h2>
+    <div class="answer">
+      <p>In Java, a process refers to an instance of a program that is being executed, and it has its own memory space and system resources. On the other hand, a thread is a unit of execution within a process. Multiple threads can exist within a single process and share the same memory space and system resources.</p>
+      <p>Here are some key differences between processes and threads:</p>
+      <ul>
+        <li>Processes are heavyweight, whereas threads are lightweight.</li>
+        <li>Processes have separate memory spaces, whereas threads share the same memory space.</li>
+        <li>Context switching between processes is more time-consuming than context switching between threads.</li>
+        <li>Processes communicate with each other through inter-process communication mechanisms, whereas threads communicate through shared memory or message passing.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>

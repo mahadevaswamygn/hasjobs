@@ -1,32 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Title</title>-->
-<!--    <style>-->
-<!--    .header {-->
-<!--      background-color: #f2f2f2;-->
-<!--      padding: 20px;-->
-<!--    }-->
-
-<!--    .logo {-->
-<!--      max-width: 100px;-->
-<!--      height: 30px;-->
-<!--    }-->
-<!--  </style>-->
-<!--</head>-->
-<!--<body>-->
-<!--<div class="header">-->
-<!--    <header>-->
-<!--        <div>-->
-<!--            <div>-->
-<!--                <img class="logo" src="hasjob-logo.png" alt="Logo">-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </header>-->
-<!--</div>-->
-<!--</body>-->
-<!--</html>-->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -42,11 +13,27 @@
   max-width: 100%;
 }
 
+.footer {
+  background: #ebe7e4;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+  min-height: 40px;
+  padding: 0px;
+  margin: 0;
+  width: 100vw;
+  max-width: 100%;
+}
+
 @media (min-width: 600px) {
   .container {
     max-width: 100%;
     margin: 0 auto;
   }
+}
+
+.navbara{
+overflow:hidden;
+position:fixed;
 }
 
 .left-section {
@@ -131,120 +118,146 @@ max-width: 100px;
 .jobs-display {
   margin-left: 332px;
   margin-right: 332px;
+
 }
-
-
-
-
 
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<body>
-<div class="container">
-    <div class="left-section">
-        <div style="position:relative;left:335px;top:2px">
-            <img src="hasjob-logo.png" alt="HasJob Logo" class="logo">
-        </div>
+<body style="width=100%">
+<div class="navbars">
+    <div class="container">
+        <div class="left-section">
+            <div style="position:relative;left:335px;top:2px">
+                <a th:href="@{/home}"><img src="hasjob-logo.png" alt="HasJob Logo" class="logo"></a>
+            </div>
 
-        <div style="
+            <div style="
     position: relative;
     left: 335px;
     top: 1px;
     width: 60px;
 ">
-            <p class="text" style="color:rgb(223,94,14);font-size:18px; font-weight:bold;">HasJob</p>
-        </div>
-        <div style="color:purple;position:relative;left:335px;font-weight:bold;">
-            <p class="text">The Hasgeek Job Board</p>
-        </div>
+                <a th:href="@{/home}"><p class="text" style="color:rgb(223,94,14);font-size:18px; font-weight:bold;">
+                    HasJob</p></a>
+            </div>
+            <div style="color:purple;position:relative;left:335px;font-weight:bold;">
+                <a th:href="@{/home}"><p class="text">The Hasgeek Job Board</p></a>
+            </div>
+            <div style="position:relative;left:1158px;top:2px;"><img src="apps.png" alt="app" class="logo"></div>
 
 
-    </div>
-    <div class="right-section">
-        <div style="
+        </div>
+        <div class="right-section">
+            <div style="
     left: -426px;
     position: relative;
     top: -30px;
 ">
-            <a th:href="@{/new}">
-                <button class="button">Post a Job</button>
-            </a>
+                <a th:href="@{/new}">
+                    <button class="button">Post a Job</button>
+                </a>
 
-        </div>
-        <div style="
+            </div>
+            <div style="
     position: relative;
     tab-size: -20px;
     top: -51px;
     left: -340px;
 ">
-            <a th:href="@{/login}">
-                <button class="button login">Login</button>
-            </a>
+                <a th:href="@{/login}">
+                    <button class="button login">Login</button>
+                </a>
+            </div>
+            <div style="position:relative;left:-450px;top:5px;">
+                <a th:href="@{/interview-preparation}">
+                    <button> Interview Preparation</button>
+                </a>
+            </div>
+            <div style="position:relative;left:-292px;top:-16px;">
+                <a th:href="@{/course}"><button type="submit">Take course</button></a>
+            </div>
+
         </div>
+        <div class="clearfix">
+            <form id="filterForm" th:action="@{/filter}" style="display:flex;justify-content:center;">
+                <div style="position:relative;top:2px;left:-62px;">
+                    <select id="location" name="location" style="width:188px;height:32px">
+                        <option value="">Location</option>
+                        <option th:each="location : ${allLocations}" th:value="${location}"
+                                th:text="${location}"></option>
+                    </select>
+                </div>
 
-    </div>
-    <div class="clearfix">
-        <form id="filterForm" th:action="@{/filter}" style="display:flex;justify-content:center;">
-            <div style="position:relative;top:2px;left:-62px;">
-                <select id="location" name="location" style="width:188px;height:32px">
-                    <option value="">Location</option>
-                    <option th:each="location : ${allLocations}" th:value="${location}" th:text="${location}"></option>
-                </select>
-            </div>
-
-            <div style="position:relative;top:2px;left:-31px;">
-                <select id="type" name="type" style="width:188px;height:32px">
-                    <option value="">Type</option>
-                    <option th:each="type : ${allTypes}" th:value="${type}" th:text="${type}"></option>
-                </select>
-            </div>
-            <div style="position:relative;top:2px;left:-1px;">
-                <select id="category" name="category" style="width:188px;height:32px">
-                    <option value="">Category</option>
-                    <option value="programming">Programming</option>
-                    <option value="integration">Integration</option>
-                    <option value="graphicdesign">Graphic Design</option>
-                </select>
-            </div>
-            <div style="position:relative;top:2px;left:24px;">
-                <select id="pay" name="paying" style="width:188px;height:32px">
-                    <option value="">Category</option>
-                    <option value="programming">Programming</option>
-                    <option value="integration">Integration</option>
-                    <option value="graphicdesign">Graphic Design</option>
-                </select>
-            </div>
-            <button type="submit" id="submitButton" style="display:none;"></button>
-        </form>
-        <script>
-        // Function to automatically submit the form
-        function autoSubmitForm() {
-            // Submit the form by triggering the submit button click event
-            $('#submitButton').click();
-        }
-
-        // Listen for change event on select elements
-        $('#location, #type, #category, #pay').on('change', function() {
-            autoSubmitForm(); // Call the autoSubmitForm function
-        });
-    </script>
-        <div style="position:relative;top:2px;left:24px;">
-            <form th:action="@{/search}">
-                <input type="text" name="search" style="position:relative;left:1276px;top:-31px;height:25px"
-                       placeholder="search">
+                <div style="position:relative;top:2px;left:-31px;">
+                    <select id="type" name="type" style="width:188px;height:32px">
+                        <option value="">Type</option>
+                        <option th:each="type : ${allTypes}" th:value="${type}" th:text="${type}"></option>
+                    </select>
+                </div>
+                <div style="position:relative;top:2px;left:-1px;">
+                    <select id="category" name="category" style="width:188px;height:32px">
+                            <option value="">Job Category</option>
+                            <option value="programming">Programming</option>
+                            <option value="integration">Integration</option>
+                            <option value="graphicdesign">Graphic Design</option>
+                            <option value="Information Security">Information Security</option>
+                            <option value="Testing/Quality Assurance">Testing/Quality Assurance</option>
+                            <option value="IT/Systems Administration">IT/Systems Administration</option>
+                            <option value="Business/Management">Business/Management</option>
+                            <option value="Writer/Editor">Writer/Editor</option>
+                            <option value="Customer Support">Customer Support</option>
+                            <option value="Mobile (iPhone, Android, other)" >Mobile (iPhone, Android, other)</option>
+                            <option value="Office Administration">Office Administration</option>
+                    </select>
+                </div>
+                <div style="position:relative;top:2px;left:24px;">
+                    <select id="pay" name="pay" style="width:188px;height:32px">
+                        <option value="">Pay</option>
+                        <option th:each="salary : ${allSalary}" th:value="${salary}" th:text="${salary}"></option>
+                    </select>
+                </div>
+                <button type="submit" id="submitButton" style="display:none;"></button>
             </form>
+
+
+            <script>
+    function autoSubmitForm() {
+        var location = $('#location').val();
+        var type = $('#type').val();
+        var category = $('#category').val();
+        var paying = $('#pay').val();
+
+
+        localStorage.setItem('selectedLocation', location);
+        localStorage.setItem('selectedType', type);
+        localStorage.setItem('selectedCategory', category);
+        localStorage.setItem('selectedPaying', paying);
+
+        $('#submitButton').click();
+    }
+
+    $('#location, #type, #category, #pay').on('change', function() {
+        autoSubmitForm();
+    });
+
+            </script>
+
+
+            <div style="position:relative;top:2px;left:24px;width:40px;">
+                <form th:action="@{/search}">
+                    <input type="text" name="search" style="position:relative;left:1264px;top:-31px;height:25px"
+                           placeholder="search">
+                </form>
+            </div>
+
         </div>
 
-    </div>
-
-    <div id="jobContainer">
+        <div id="jobContainer">
 
 
-    </div>
-
-    <!-- Include any necessary JavaScript code -->
-    <script th:inline="javascript">
+        </div>
+        <script th:inline="javascript">
   // Event listener for location filter
   document.getElementById('location').addEventListener('change', function() {
     var location = this.value;
@@ -284,36 +297,36 @@ max-width: 100px;
   }
 
 
+        </script>
 
-
-
-
-    </script>
-
+    </div>
 </div>
 
-<div class="jobs-display">
+<div class="jobs-display" style="margin-left: 332px; margin-right: 332px; height: 800px;">
     <div class="row">
         <div th:each="job, status:${allJobs}" class="job-card" style="min-width: 40px;">
             <div>
                 <a th:href="@{/show-job/{id}(id=${job.id})}" style="text-decoration: none;">
                     <div class="job-card-header">
-                        <h3 class="job-title" style="position:relative;top:27px;left:49px; color: black;"
+                        <h3 class="job-title" style="position:relative;top:27px;left:43px; color: black;"
                             th:text="${job.headline}"></h3>
-                        <p class="company-name" style="position:relative;top:24px;left:165px"
+                        <p class="company-name" style="position:relative;top:24px;left:148px"
                            th:text="${job.company.name}"></p>
+
                     </div>
                     <div class="job-card-body">
                         <p class="location" style="position:relative;top:-57px;" th:text="${job.location}"></p>
-                        <p class="posted-date" style="position:relative;top:-78px;left:97px"
-                           th:text="${job.postedDate}"></p>
+                        <p class="posted-date" style="position:relative;top:-71px;left:158px"
+                           th:text="${#dates.format(job.postedDate, 'dd MMMM')}"></p>
                     </div>
                 </a>
             </div>
         </div>
     </div>
 </div>
-
-
+<div class="footer" style="position:relative; top:6px">
+    <p align="center" style="position:relative;top:11px">Hasjob is a service of<a href=""> Hasgeek</a>.Subscribe to<a
+            href=""> the feed</a>or follow<a href="">@hasjob on Twitter </a>to find out when new jobs are posted. </p>
+</div>
 </body>
 </html>

@@ -168,38 +168,44 @@ max-width: 100px;
 
             <div style="position:relative;top:2px;left:-31px;">
                 <select id="type" name="type" style="width:188px;height:32px">
-                    <option value="">Type</option>
+                    <option value="">Job Type</option>
                     <option th:each="type : ${allTypes}" th:value="${type}" th:text="${type}"></option>
                 </select>
             </div>
             <div style="position:relative;top:2px;left:-1px;">
                 <select id="category" name="category" style="width:188px;height:32px">
-                    <option value="">Category</option>
+                    <option value="">Job Category</option>
                     <option value="programming">Programming</option>
                     <option value="integration">Integration</option>
                     <option value="graphicdesign">Graphic Design</option>
+                    <option value="Information Security">Information Security</option>
+                    <option value="Testing/Quality Assurance">Testing/Quality Assurance</option>
+                    <option value="IT/Systems Administration">IT/Systems Administration</option>
+                    <option value="Business/Management">Business/Management</option>
+                    <option value="Writer/Editor">Writer/Editor</option>
+                    <option value="Customer Support">Customer Support</option>
+                    <option value="Mobile (iPhone, Android, other)" >Mobile (iPhone, Android, other)</option>
+                    <option value="Office Administration">Office Administration</option>
                 </select>
             </div>
             <div style="position:relative;top:2px;left:24px;">
-                <select id="pay" name="paying" style="width:188px;height:32px">
-                    <option value="">Category</option>
-                    <option value="programming">Programming</option>
-                    <option value="integration">Integration</option>
-                    <option value="graphicdesign">Graphic Design</option>
+                <select id="pay" name="pay" style="width:188px;height:32px">
+                    <option value="">Pay</option>
+                    <option th:each="salary : ${allSalary}" th:value="${salary}" th:text="${salary}"></option>
                 </select>
             </div>
             <button type="submit" id="submitButton" style="display:none;"></button>
         </form>
-        <script>
-        function autoSubmitForm() {
-            $('#submitButton').click();
-        }
-        $('#location, #type, #category, #pay').on('change', function() {
-            autoSubmitForm(); // Call the autoSubmitForm function
-        });
+<!--        <script>-->
+<!--        function autoSubmitForm() {-->
+<!--            $('#submitButton').click();-->
+<!--        }-->
+<!--        $('#location, #type, #category, #pay').on('change', function() {-->
+<!--            autoSubmitForm(); // Call the autoSubmitForm function-->
+<!--        });-->
 
 
-        </script>
+<!--        </script>-->
         <div style="position:relative;top:2px;left:24px;">
             <form th:action="@{/search}">
                 <input type="text" name="search" style="position:relative;left:1276px;top:-31px;height:25px"
@@ -230,5 +236,25 @@ max-width: 100px;
         </div>
     </div>
 </div>
+<script>
+    function autoSubmitForm() {
+        var location = $('#location').val();
+        var type = $('#type').val();
+        var category = $('#category').val();
+        var paying = $('#pay').val();
+
+
+        localStorage.setItem('selectedLocation', location);
+        localStorage.setItem('selectedType', type);
+        localStorage.setItem('selectedCategory', category);
+        localStorage.setItem('selectedPaying', paying);
+
+        $('#submitButton').click();
+    }
+
+    $('#location, #type, #category, #pay').on('change', function() {
+        autoSubmitForm();
+    });
+</script>
 </body>
 </html>

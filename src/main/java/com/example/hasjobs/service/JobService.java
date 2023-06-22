@@ -1,13 +1,14 @@
 package com.example.hasjobs.service;
 
 import com.example.hasjobs.entity.Job;
-import com.example.hasjobs.repository.CompanyRepository;
 import com.example.hasjobs.repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class JobService {
@@ -16,8 +17,8 @@ public class JobService {
     @Autowired
     JobRepository jobRepository;
 
-    public void saveJob(Job job) {
-        jobRepository.save(job);
+    public Job saveJob(Job job) {
+        return jobRepository.save(job);
 
     }
 
@@ -52,53 +53,92 @@ public class JobService {
         return allJobTypes;
     }
 
-    public List<Job> filterJobs(String location, String type, String category) {
+    public List<Job> filterJobs(String location, String type, String category, String pay) {
         List<Job> allJobs = jobRepository.findAll();
         if (location != null) {
-            boolean typeFilter = false;
+            if (location.length() <= 1) location = null;
+        }
+        if (location != null) {
             List<Job> filteredByLocation = new ArrayList<>();
-            List<Job> filteredByLocationAndType = new ArrayList<>();
             for (Job job : allJobs) {
                 if (job.getLocation().equals(location)) {
                     filteredByLocation.add(job);
                 }
             }
-            if(filteredByLocation!=null) {
+            if (filteredByLocation != null) {
                 return filteredByLocation;
             }
-            if (type != null) {
-                typeFilter = true;
-                for (Job job : filteredByLocation) {
-                    if (job.getType().equals(type)) {
-                        filteredByLocationAndType.add((job));
-                    }
-                }
-            }
-            if (typeFilter == false) {
-                if (category != null) {
-                    List<Job> filteredByLocationAndCategory = new ArrayList<>();
-                    for (Job job : filteredByLocation) {
-                        if (job.getCategory().equals(category)) {
-                            filteredByLocationAndCategory.add(job);
-                        }
-                    }
-                    return filteredByLocationAndCategory;
-                }
-
-            } else {
-                if (category != null) {
-                    List<Job> filteredByLocationTypeAndCategory = new ArrayList<>();
-                    for (Job job : filteredByLocationAndType) {
-                        if ((job.getCategory().equals(category))) {
-                            filteredByLocationTypeAndCategory.add(job);
-                        }
-                    }
-                    return filteredByLocationTypeAndCategory;
-                }
-                return filteredByLocationAndType;
-            }
-            return filteredByLocation;
         }
-        return allJobs;
+        if (type != null) {
+            if (type.length() <= 1) type = null;
+        }
+        if (type != null) {
+            List<Job> filteredByType = new ArrayList<>();
+            for (Job job : allJobs) {
+                if (job.getType().equals(type)) {
+                    filteredByType.add(job);
+                }
+            }
+            return filteredByType;
+        }
+        if (category != null) {
+            if (category.length() <= 1) category = null;
+        }
+        if (category != null) {
+            List<Job> filteredByCategory = new ArrayList<>();
+            for (Job job : allJobs) {
+                if (category.equals(job.getCategory().toLowerCase())) {
+                    filteredByCategory.add(job);
+                }
+            }
+            return filteredByCategory;
+        }
+        if (pay != null) {
+            List<Job> filteredByPay = new ArrayList<>();
+            for (Job job : allJobs) {
+                if (job.getSalary() == (Integer.parseInt(pay))) {
+                    filteredByPay.add(job);
+                }
+            }
+            return filteredByPay;
+        }
+        return null;
+    }
+
+    public Job findJobById(int id) {
+        Job job = jobRepository.findById(id).get();
+        return job;
+    }
+
+    public String findTrendingTechnology() {
+        List<Job> allJobs = jobRepository.findAll();
+        HashMap<String, Integer> trendingTechnology = new HashMap<>();
+        for (Job job : allJobs) {
+            if (trendingTechnology.containsKey(job.getCategory())) {
+                int numberOfOpenings = trendingTechnology.get(job.getCategory());
+                trendingTechnology.put(job.getCategory(), numberOfOpenings + 1);
+            } else {
+                trendingTechnology.put(job.getCategory(), 1);
+            }
+        }
+        int numberOfOpenings = 0;
+        String technology = "";
+        for (Map.Entry<String, Integer> technologyStoredMap : trendingTechnology.entrySet()) {
+            if (numberOfOpenings < technologyStoredMap.getValue()) {
+                technology = technologyStoredMap.getKey();
+            }
+        }
+        return technology;
+    }
+
+    public List<String> findAllSalary() {
+        List<Job> allJobs = jobRepository.findAll();
+        List<String> allSalary = new ArrayList<>();
+        for (Job job : allJobs) {
+            if (!allSalary.contains(Integer.toString(job.getSalary()))) {
+                allSalary.add(Integer.toString(job.getSalary()));
+            }
+        }
+        return allSalary;
     }
 }

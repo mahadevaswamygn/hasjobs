@@ -27,9 +27,11 @@ public class Company {
     public byte[] getLogo() {
         return logo;
     }
+
     public void setLogo(byte[] logo) {
         this.logo = logo;
     }
+
     public String getLogoAsBase64() {
         if (logo != null && logo.length > 0) {
             return Base64.getEncoder().encodeToString(logo);

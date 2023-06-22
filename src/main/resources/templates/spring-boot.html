@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Spring Interview Question</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+
+    h2 {
+      color: #333;
+      margin-top: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+    .header{
+        margin-left: 200px;
+        max-width: 900px;
+        border: solid 1px black;
+        padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<a th:href="@{/home}"> Home </a>
+<div class="header">
+  <h1>Spring InterView Question</h1>
+  <div class="question">
+    <h2 class="question-title">Question 1: What is Spring Framework?</h2>
+    <div class="answer">
+      <p>Spring is a popular open-source application framework for Java. It provides comprehensive infrastructure support for developing Java applications. The Spring Framework focuses on dependency injection (IoC), aspect-oriented programming (AOP), and provides various modules for different functionalities.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 2: What are the core benefits of using Spring Framework?</h2>
+    <div class="answer">
+      <p>The core benefits of using the Spring Framework include:</p>
+      <ul>
+        <li>Enables loose coupling and promotes modular application development</li>
+        <li>Provides a lightweight and non-intrusive programming model</li>
+        <li>Supports aspect-oriented programming (AOP)</li>
+        <li>Offers robust transaction management</li>
+        <li>Simplifies testing through dependency injection and mocking</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 3: What is inversion of control (IoC) in Spring?</h2>
+    <div class="answer">
+      <p>Inversion of Control (IoC) is a core principle of the Spring Framework. It refers to the process of delegating the control of object creation and dependency management to the Spring container. The Spring container is responsible for creating and managing objects (beans) and injecting their dependencies.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 4: What is dependency injection (DI) in Spring?</h2>
+    <div class="answer">
+      <p>Dependency Injection (DI) is a key feature of the Spring Framework. It is a design pattern that allows the injection of dependencies into an object, rather than the object creating its dependencies. In Spring, DI is achieved through constructor injection, setter injection, or field injection.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 5: What is Spring Boot?</h2>
+    <div class="answer">
+      <p>Spring Boot is a framework built on top of the Spring Framework that simplifies the development of Java applications. It provides an opinionated approach to configuration and convention over configuration, reducing the boilerplate code and enabling rapid application development.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 6: What is the difference between @Component, @Repository, @Service, and @Controller annotations in Spring?</h2>
+    <div class="answer">
+      <p>These annotations are used for component scanning and automatic bean creation in Spring:</p>
+      <ul>
+        <li>@Component is a generic stereotype annotation for any Spring-managed component.</li>
+        <li>@Repositoryis a specialization of <code>@Component</code> used for database access.</li>
+        <li>@Service is a specialization of <code>@Component</code> used for the business logic layer.</li>
+        <li>@Controller is a specialization of <code>@Component</code> used for MVC controllers.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 7: What is the purpose of the Spring MVC framework?</h2>
+    <div class="answer">
+      <p>The Spring MVC framework is a part of the Spring Framework that provides support for building web applications. It follows the Model-View-Controller (MVC) architectural pattern and helps in creating flexible and loosely coupled web components.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 8: Explain the concept of AOP (Aspect-Oriented Programming) in Spring.</h2>
+    <div class="answer">
+      <p>Aspect-Oriented Programming (AOP) is a programming paradigm that enables modularization of cross-cutting concerns. In Spring, AOP allows the separation of cross-cutting concerns, such as logging, security, and transaction management, from the main business logic by using aspects.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 9: What is the Spring Bean Lifecycle?</h2>
+    <div class="answer">
+      <p>The Spring Bean Lifecycle refers to the various stages in the lifecycle of a Spring bean, from its creation to destruction. It includes the following stages: bean instantiation, population of bean properties, bean initialization, and bean destruction.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 10: What is the purpose of the Spring Container?</h2>
+    <div class="answer">
+      <p>The Spring Container, also known as the Spring IoC container, is responsible for managing the lifecycle of Spring beans and their dependencies. It creates, configures, and manages the objects (beans) in an application, applying inversion of control and dependency injection principles.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 11: What is the difference between singleton and prototype scopes in Spring?</h2>
+    <div class="answer">
+      <p>In Spring, the singleton and prototype are two commonly used bean scopes:</p>
+      <ul>
+        <li>Singleton: It is the default scope in Spring. A singleton bean is created once per container and shared across multiple requests. It remains in memory until the container is destroyed.</li>
+        <li>Prototype: A new instance of a prototype bean is created every time it is requested from the container. It is not shared and allows for multiple independent instances.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 12: What is the Spring Data JPA module?</h2>
+    <div class="answer">
+      <p>The Spring Data JPA module is a part of the Spring Data project that provides enhanced support for JPA (Java Persistence API) based data access. It simplifies the development of JPA repositories and reduces boilerplate code by generating queries based on method names and annotations.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 13: Explain the concept of transaction management in Spring.</h2>
+    <div class="answer">
+      <p>Transaction management in Spring allows for managing database transactions in a declarative manner. It provides support for both programmatic and declarative transaction management. Declarative transaction management is achieved using annotations or XML-based configuration.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 14: What are the different types of dependency injection supported by Spring?</h2>
+    <div class="answer">
+      <p>Spring supports three types of dependency injection:</p>
+      <ul>
+        <li>Constructor Injection: Dependencies are injected through a constructor.</li>
+        <li>Setter Injection: Dependencies are injected using setter methods.</li>
+        <li>Field Injection: Dependencies are injected directly into the fields of a class.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 15: What is the purpose of the @Autowired annotation in Spring?</h2>
+    <div class="answer">
+      <p>The <code>@Autowired</code> annotation is used for automatic dependency injection in Spring. It allows the Spring container to automatically wire beans together by matching the dependency type and injecting the corresponding bean.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 16: What is the difference between constructor injection and setter injection in Spring?</h2>
+    <div class="answer">
+      <p>In constructor injection, dependencies are injected through a constructor, while in setter injection, dependencies are injected using setter methods. Constructor injection is generally considered more preferred as it enforces the creation of fully initialized objects, whereas setter injection allows for optional dependencies.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 17: What is the purpose of the @Qualifier annotation in Spring?</h2>
+    <div class="answer">
+      <p>The <code>@Qualifier</code> annotation is used to resolve ambiguity when multiple beans of the same type are present in the Spring container. It is used in conjunction with <code>@Autowired</code> to specify the exact bean to be injected.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 18: What is the Spring Security framework?</h2>
+    <div class="answer">
+      <p>Spring Security is a powerful and highly customizable security framework for Java applications. It provides authentication, authorization, and other security features to secure web applications and services. Spring Security integrates well with other Spring modules.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 19: What is the purpose of the Spring AOP framework?</h2>
+    <div class="answer">
+      <p>The Spring AOP (Aspect-Oriented Programming) framework provides support for aspect-oriented programming in Spring applications. It allows the modularization of cross-cutting concerns and provides capabilities like method interception, before/after advice, and aspect weaving.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <h2 class="question-title">Question 20: How does Spring support internationalization and localization?</h2>
+    <div class="answer">
+      <p>Spring provides support for internationalization (i18n) and localization (l10n) through its <code>MessageSource</code> abstraction. It allows developers to externalize messages and provides mechanisms to resolve messages based on the user's locale, making it easier to develop applications that support multiple languages.</p>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

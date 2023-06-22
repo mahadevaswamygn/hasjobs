@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Details</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<style>
+    .description {
+        display: grid;
+        width: 618px;
+        text-align: justify;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: white;
+        padding: 20px;
+    }
+
+    #title {
+        text-align: left;
+        margin-top: 0;
+        color: #df5e0e;
+        font-size: 30px;
+        position: relative;
+        top: 13px;
+    }
+
+    #post-by {
+        color: #999292;
+    }
+
+    a {
+        text-decoration: none;
+        color: blue;
+    }
+
+    h2 {
+        color: #816894;
+    }
+
+    .job-description {
+        width: 604px;
+    }
+
+    .navbardescription {
+        display: flex;
+    }
+
+    .navbar {
+        position: relative;
+        left: 37px;
+        height: 188px;
+        width: 159px;
+        text-align: center;
+    }
+
+    .navs {
+        text-decoration: none;
+        color: rgb(94, 91, 91);
+    }
+
+    .navbars:hover {
+        background-color: #cfc6c6;
+    }
+
+    .navbar p {
+        border-bottom: 1px solid black;
+        width: 163px;
+    }
+
+    .navbars {
+        display: flex;
+        height: 22px;
+        justify-content: center;
+        align-items: center;
+        padding-top: 32px;
+    }
+    .navbars i {
+      margin-right: 10px;
+    }
+
+    .show-instruction-button {
+        padding: 12px;
+        font-size: 18px;
+        color: white;
+        background: #285e8e;
+    }
+    #name{
+        position: relative;
+        height: 29px;
+        width: 679px;
+        right: -48px;
+    }
+    .name-label{
+        font-weight:bold;
+    }
+    #edit-name{
+        position: relative;
+        top: -7px;
+        right: -90px;
+    }
+    .email-label{
+        font-weight:bold;
+    }
+    #email-radio{
+        position: relative;
+        right: -38px;
+    }
+    .email-id{
+        position: relative;
+        right: -45px;
+    }
+    #add-email{
+        position: relative;
+        right: -89px;
+        top: -8px;
+    }
+    .phone-label{
+        font-weight:bold;
+    }
+    #phone{
+        position: relative;
+        height: 29px;
+        width: 679px;
+        right: -48px;
+    }
+    #phone-reach{
+        position: relative;
+        top: -7px;
+        right: -90px;
+    }
+    .job-application-label{
+        font-weight: bold;
+    }
+    .job-application-label{
+        position: relative;
+        top: -3px;
+    }
+    #job-application{
+        height: 135px;
+        position: relative;
+        top: 2px;
+        left: 1px;
+        width: 782px;
+    }
+    .optional-class{
+        color: #000;
+    }
+    .apply-button{
+        padding: 12px;
+        font-size: 18px;
+        color: white;
+
+        background: #285e8e;
+    }
+    .instructions p{
+        color: #999292;
+        font-size:medium;
+    }
+    #note{
+        color: black;
+    }
+    #resume-linkedin{
+        color: black;
+    }
+    #instructionsContainer{
+        display: none;
+    }
+    #bookmark-this i{
+        position: relative;
+        right: 13px;
+    }
+    #bookmark-this a{
+        position: relative;
+        right: 15px;
+    }
+    #email-this i{
+        position: relative;
+        right: 24px;
+    }
+    #email-this a{
+        position: relative;
+        right: 30px;
+    }
+    #tweet-this i{
+        position: relative;
+        right: 23px;
+    }
+    #tweet-this a{
+        position: relative;
+        right: 29px;
+    }
+    #share-facebook i{
+        position: relative;
+        left: 4px;
+    }
+    #report-this i{
+        position: relative;
+        right: 20px;
+    }
+    #report-this a{
+        position: relative;
+        right: 23px;
+    }
+    .responsibilities{
+        width: 604px;
+    }
+    .requirements{
+        width:604px
+    }
+</style>
+
+<body>
+<div class="container">
+<!--  <button style="background-color: green;">edit</button>-->
+  <form th:action="@{/home}" method="get">
+    <button th:style="'background-color: green;'" type="submit">confirm</button>
+  </form>
+  <div class="header">
+    <h1 id="title" th:text="${job.headline}"></h1>
+    <p id="post-by">Posted <span th:text="${#dates.format(job.postedDate, 'dd MMMM yyyy')}"></span> by <span th:text="${job.poster}"></span></p>
+  </div>
+  <div class="link">
+    <a href="https://hasjob.co/exceleron.com" style="font-weight: bold;" th:text="${job.company.name}"></a>
+    <a href="https://hasjob.co/?l=bengaluru" th:text="${job.location}"> . </a>
+    <a href="https://www.exceleron.com/" target="_blank" th:text="${job.company.url}"></a>
+    <a href="https://hasjob.co/?t=fulltime" th:text="${job.type}"></a>
+    <a href="https://hasjob.co/?c=edit" th.text="${job.Category}"></a>
+    <br><br>
+  </div>
+  <hr>
+  <div class="description">
+    <div class="navbardescription">
+      <div class="job-description">
+        <p th:text="${job.description}"></p>
+        <p th:text="${job.jobPerks}"></p>
+      </div>
+      <div class="navbar">
+        <div class="navbars">
+          <p id="bookmark-this"><i class="fas fa-bookmark"></i> <a class="navs" href="">Bookmark this</a></p>
+        </div>
+        <div class="navbars">
+          <p id="email-this"><i class="fas fa-envelope"></i> <a class="navs" href="">Email this</a></p>
+        </div>
+        <div class="navbars">
+          <p id="tweet-this"><i class="fab fa-twitter"></i> <a class="navs" href="">Tweet this</a></p>
+        </div>
+        <div class="navbars">
+          <p id="share-facebook"><i class="fab fa-facebook"></i> <a class="navs" href="">Share on Facebook</a></p>
+        </div>
+        <div class="navbars">
+          <p id="report-this"><i class="fas fa-flag"></i> <a class="navs" href="">Report this</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="responsibilities">
+      <h3>Responsibilities</h3>
+      <ul>
+        <li>Write technical documentation for internal or external developer audiences, such as API
+          reference docs and developer guides.</li>
+        <li>Design and organize documentation sets for new APIs and developer products.</li>
+        <li>Edit, clarify, and proofread documents written by others, and coach non-writers on ways to
+          improve their writing skills.</li>
+        <li>Manage complex projects involving diverse stakeholders.</li>
+        <li>Understanding of User Stories and User Journey creation and communication.</li>
+        <li>Understanding and Communicating Business Processes and Flows.</li>
+        <li>You should be able to wear multiple hats, as a product champion and driver of successful product
+          execution.</li>
+      </ul>
+
+    </div>
+    <div class="requirements">
+      <h3>Requirements</h3>
+      <ul>
+        <li>BA/BS degree or equivalent practical experience.</li>
+        <li>2 years of relevant experience, such as technical writing, product documentation, or online
+          publishing including experience with writing technical customer-facing materials.</li>
+        <li>Experience with source code written in Java, C++, Perl/Python and/or JavaScript.</li>
+        <li>4 years of relevant work experience, including experience researching and writing excellent
+          documentation for developers (APIs, SDKs, web technologies).</li>
+        <li>Proficiency with HTML and CSS; proficiency in a UNIX environment.</li>
+        <li>Ability to manage multiple competing priorities in a fast-paced, constantly changing
+          environment.</li>
+        <li>Exposure to Product Management, Process Management applications is preferred.</li>
+      </ul>
+
+    </div>
+    <div class=" no-position">
+      <p>Number of positions open - 2 </p>
+      <p>Exposure to Product Management, Process Management applications is preferred.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

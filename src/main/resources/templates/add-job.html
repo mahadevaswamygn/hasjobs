@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+.container {
+  background: #ebe7e4;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+  min-height: 62px;
+  padding: 0px;
+  margin: 0;
+  width: 100vw;
+  max-width: 100%;
+}
+
+@media (min-width: 600px) {
+  .container {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Add some spacing between the text */
+}
+
+.right-section {
+  float: right;
+}
+
+.text {
+  margin: 0;
+  padding: 0;
+}
+
+.button {
+  margin-left: 10px;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.button.login {
+  margin-left: 10px;
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+.button {
+  margin-left: 10px;
+  background-color: #816894;
+  border-color: #816894;
+  border-bottom-color: rgb(129, 104, 148);
+  border-bottom: 2px solid #554562;
+  color: #fff;
+}
+.logo {
+max-width: 100px;
+ height: 33px;
+ }
+
+ body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0px;
+        }
+
+        .containera {
+            max-width: 800px;
+            margin: 0 auto;
+
+        }
+
+        h1 {
+            text-align: left;
+            margin-top: 0;
+            color: #df5e0e;
+            font-size: 30px;
+        }
+
+<!--        form {-->
+<!--            margin-top: 20px;-->
+<!--        }-->
+
+        label {
+            display: inline-block;
+            margin-top: 10px;
+            width: 120px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            display: inline-block;
+            width: 80%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="file"] {
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        #type input[type="radio"],
+        #type label {
+           display: inline;
+           vertical-align: middle;
+           margin-left: 100px;
+        }
+        #category input[type="radio"],
+        #category label {
+           display: inline;
+           vertical-align: middle;
+           margin-left: 100px;
+        }
+        #headline{
+            border-color: #a94442;
+        }
+        a {
+            text-decoration: none;
+        }
+        #submission{
+            display: inline-block;
+            white-space: nowrap;
+            position: relative;
+            left: -123px;
+            top: -3px;
+            width: 779px;
+            margin-left: 122px;
+        }
+        #employer-name{
+            position: relative;
+            top: -6px;
+            border-color: #a94442;
+        }
+        #single-line{
+            margin-left: 140px;
+            color: #a94442;;
+        }
+        .relocation-class{
+            display: inline-block;
+            white-space: nowrap;
+            position: relative;
+            right: -125px;
+            top: -20px;
+        }
+        #relocation{
+            position: relative;
+            left: 127px;
+            top: -20px;
+        }
+        .perks{
+            position: relative;
+            left: 31px;
+            top: -37px;
+            display: inline-block;
+            white-space: nowrap;
+        }
+        #perks{
+            position: relative;
+            left: -126px;
+            top: -37px;
+        }
+        .equity-class{
+            position: relative;
+            left: 155px;
+            display: inline-block;
+            white-space: nowrap;
+        }
+        #description{
+            position: relative;
+            right: 8px;
+            top: -34px;
+            width: 787px;
+            height: 136px;
+        }
+        #perksDescriptionText{
+            position: relative;
+            left: -124px;
+            width: 798px;
+            margin-left: 119px;
+            height: 150px;
+            top: -11px;
+        }
+        .navbara{
+overflow:hidden;
+position:fixed;
+}
+
+.footer {
+  background: #ebe7e4;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+  min-height: 40px;
+  padding: 0px;
+  margin: 0;
+  width: 100vw;
+  max-width: 100%;
+}
+
+
+
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div class="navbara">
+    <div class="container">
+        <div class="left-section">
+            <div style="position:relative;left:433px;top:2px">
+                <img src="hasjob-logo.png" alt="HasJob Logo" class="logo">
+            </div>
+            <div style="position: relative; left: 432px;top: 1px;width: 60px;">
+                <p class="text" style="color:rgb(223,94,14);font-size:18px; font-weight:bold;">HasJob</p>
+            </div>
+            <div style="color:purple;position:relative;left:435px;font-weight:bold;">
+                <p class="text">The Hasgeek Job Board</p>
+            </div>
+        </div>
+        <div class="right-section">
+            <div style=" left: -426px; position: relative;top: -30px;">
+                <a th:href="@{/new}">
+                    <button class="button">Post a Job</button>
+                </a>
+
+            </div>
+            <div style="position: relative;tab-size: -20px;top: -51px;left: -340px;">
+                <a th:href="@{/login}">
+                    <button class="button login">Login</button>
+                </a>
+            </div>
+
+        </div>
+        <div class="clearfix">
+            <form id="filterForm" th:action="@{/filter}" style="display:flex;justify-content:center;">
+                <div style="position:relative;top:2px;left:-62px;">
+                    <select id="location" name="location" style="width:188px;height:32px">
+                        <option value="">Location</option>
+                        <option th:each="location : ${allLocations}" th:value="${location}"
+                                th:text="${location}"></option>
+                    </select>
+                </div>
+
+                <div style="position:relative;top:2px;left:-31px;">
+                    <select id="type" name="type" style="width:188px;height:32px">
+                        <option value="">Type</option>
+                        <option th:each="type : ${allTypes}" th:value="${type}" th:text="${type}"></option>
+                    </select>
+                </div>
+                <div style="position:relative;top:2px;left:-1px;">
+                    <select id="category" name="category" style="width:188px;height:32px">
+                            <option value="">Job Category</option>
+                            <option value="programming">Programming</option>
+                            <option value="integration">Integration</option>
+                            <option value="graphicdesign">Graphic Design</option>
+                            <option value="Information Security">Information Security</option>
+                            <option value="Testing/Quality Assurance">Testing/Quality Assurance</option>
+                            <option value="IT/Systems Administration">IT/Systems Administration</option>
+                            <option value="Business/Management">Business/Management</option>
+                            <option value="Writer/Editor">Writer/Editor</option>
+                            <option value="Customer Support">Customer Support</option>
+                            <option value="Mobile (iPhone, Android, other)" >Mobile (iPhone, Android, other)</option>
+                            <option value="Office Administration">Office Administration</option>
+                    </select>
+                </div>
+                <div style="position:relative;top:2px;left:24px;">
+                    <select id="pay" name="pay" style="width:188px;height:32px">
+                        <option value="">Pay</option>
+                        <option th:each="salary : ${allSalary}" th:value="${salary}" th:text="${salary}"></option>
+                    </select>
+                </div>
+                <button type="submit" id="submitButton" style="display:none;"></button>
+            </form>
+            <script>
+        // Function to automatically submit the form
+        function autoSubmitForm() {
+            // Submit the form by triggering the submit button click event
+            $('#submitButton').click();
+        }
+
+        // Listen for change event on select elements
+        $('#location, #type, #category, #pay').on('change', function() {
+            autoSubmitForm(); // Call the autoSubmitForm function
+        });
+
+            </script>
+            <div style="position:relative;top:2px;left:24px;">
+                <form th:action="@{/search}">
+                    <input type="text" name="search"
+                           style="position:relative;left:1276px;top:-31px;height:15px;width:191px;"
+                           placeholder="search">
+                </form>
+            </div>
+
+        </div>
+
+        <div id="jobContainer">
+
+
+        </div>
+
+        <!-- Include any necessary JavaScript code -->
+        <script th:inline="javascript">
+  // Event listener for location filter
+  document.getElementById('location').addEventListener('change', function() {
+    var location = this.value;
+    filterJobs(location);
+  });
+
+  // Event listener for type filter
+  document.getElementById('type').addEventListener('change', function() {
+    var location = document.getElementById('location').value;
+    var type = this.value;
+    filterJobs(location, type);
+  });
+
+  // Event listener for category filter
+  document.getElementById('category').addEventListener('change', function() {
+    var location = document.getElementById('location').value;
+    var type = document.getElementById('type').value;
+    var category = this.value;
+    filterJobs(location, type, category);
+  });
+
+  // Event listener for pay filter
+  var payRadios = document.querySelectorAll('input[name="pay"]');
+  payRadios.forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      var location = document.getElementById('location').value;
+      var type = document.getElementById('type').value;
+      var category = document.getElementById('category').value;
+      var pay = this.value;
+      filterJobs(location, type, category, pay);
+    });
+  });
+
+  function filterJobs(location, type, category, pay) {
+    // Implement your filtering logic here based on the selected criteria
+    // Update the displayed jobs accordingly
+  }
+
+
+
+
+
+
+
+        </script>
+
+    </div>
+</div>
+<div style="position:relative;top:121px;">
+    <div class="containera">
+        <h1>Post a Job</h1>
+        <form method="POST" th:action="@{/post-job}">
+            <p>Hasjob is visited by thousands of developers every month. Posts are valid for 30 days.</p>
+            <p><b>Attention, recruiters:</b> You may NOT use this site to post jobs on behalf of your clients. We accept
+                posts for your own firm only. Please read the <a href="https://hasjob.co/tos">terms of service</a> and
+                ask your clients to list for themselves.</p>
+            <h2 style="color: #816894;">First, tell us about the position</h2>
+            <label for="headline" style="color:#a94442;font-weight: bold;">Headline</label>
+            <input type="text" id="headline" name="headline" required><br>
+            <p id="single-line">A single-line summary. This goes to the front page and across the network. <a
+                    href="https://hasjob.co/tos">A/B test it?</a></p>
+            <label for="type" style="font-weight: bold; position: relative; top:41px">Type</label>
+            <ul id="type">
+                <input type="radio" id="type-full-time" name="type" value="Full-time employment" required>Full-time
+                employment<br>
+                <input type="radio" id="type-short-term" name="type" value="Short-term contract">Short-term contract<br>
+                <input type="radio" id="type-internship" name="type" value="Internship">Internship<br>
+                <input type="radio" id="type-freelance" name="type" value="Freelance or consulting">Freelance or
+                consulting<br>
+                <input type="radio" id="type-volunteer" name="type" value="Volunteer contributor">Volunteer
+                contributor<br>
+                <input type="radio" id="type-partner" name="type" value="Partner for a venture">Partner for a
+                venture<br>
+            </ul>
+
+            <label for="category" style="font-weight: bold; position: relative; top:41px">Category</label>
+            <ul id="category">
+                <input type="radio" id="category-programming" name="category" value="Programming"
+                       required>Programming<br>
+                <input type="radio" id="category-interaction-design" name="category" value="Interaction Design">Interaction
+                Design<br>
+                <input type="radio" id="category-graphic-design" name="category" value="Graphic Design">Graphic
+                Design<br>
+                <input type="radio" id="category-electronics" name="category" value="Electronics">Electronics<br>
+                <input type="radio" id="category-information-security" name="category" value="Information Security">Information
+                Security<br>
+                <input type="radio" id="category-testing-qa" name="category" value="Testing/Quality Assurance">Testing/Quality
+                Assurance<br>
+                <input type="radio" id="category-it-admin" name="category" value="IT/Systems Administration">IT/Systems
+                Administration<br>
+                <input type="radio" id="category-business-management" name="category" value="Business/Management">Business/Management<br>
+                <input type="radio" id="category-writer-editor" name="category" value="Writer/Editor">Writer/Editor<br>
+                <input type="radio" id="category-customer-support" name="category" value="Customer Support">Customer
+                Support<br>
+                <input type="radio" id="category-mobile" name="category" value="Mobile (iPhone, Android, other)">Mobile
+                (iPhone, Android, other)<br>
+                <input type="radio" id="category-office-admin" name="category" value="Office Administration"> Office
+                Administration<br>
+            </ul>
+
+            <label for="location" class="location-class" style="font-weight: bold;">Location</label>
+            <input type="text" id="location" name="location" required>
+            <p style="margin-left: 130px; color: #999292; font-size:medium;">“Bangalore”, “Chennai”, “Pune”, etc or
+                “Anywhere” (without quotes)</p>
+            <input type="checkbox" id="relocation" name="relocation">
+            <label for="relocation" class="relocation-class">Relocation assistance available</label>
+            <br><br>
+
+            <label for="description" style="font-weight: bold;position: relative; top:-40px;">Description</label>
+            <textarea id="description" name="description" rows="5" cols="30" required>
+            </textarea>
+            <p style="margin-left: -2px;color: #999292;font-size: medium;position: relative; top: -40px;">Don’t just
+                describe the job, tell a compelling story for why someone should work for you</p>
+            <label for="perks" class="perks">Job perks are available</label>
+            <input type="checkbox" id="perks" name="perks" onchange="togglePerksDescription()"><br>
+            <div id="perksDescription" style="display: none;">
+                <label for="perksDescriptionText"><b style="position: relative;top: -21px;display: inline-block;
+                white-space: nowrap;">Describe job perks</b></label>
+                <textarea id="perksDescriptionText" name="perksDescription" rows="5" cols="30"></textarea>
+                <p style="color: #999292; font-size:medium; position: relative; top: -16px;">Stock options, free lunch,
+                    free conference passes, etc</p>
+            </div>
+
+            <label for="pay"><b>What does this job pay?</b></label><br>
+            <input type="radio" id="pay-nothing" name="pay" value="Nothing" required
+                   onclick="handlePayChange('nothing')">
+            <label for="pay-nothing">Nothing</label><br>
+            <input type="radio" id="pay-one-time" name="pay" value="One-time" onclick="handlePayChange('one-time')">
+            <label for="pay-one-time">One-time</label><br>
+            <input type="radio" id="pay-recurring" name="pay" value="Recurring" onclick="handlePayChange('recurring')">
+            <label for="pay-recurring">Recurring</label><br>
+
+            <textarea id="paymentInfo" rows="4" cols="50" disabled></textarea>
+
+            <div id="priceRange" style="display: none;">
+                <input type="range" id="priceSlider" min="0" max="100000" step="5000" value="0"
+                       oninput="updatePriceIndicator(this.value)">
+                <div class="price-range">
+                    <div id="priceIndicator" class="price-indicator"></div>
+                </div>
+                <br>
+                <label for="price">Selected Price:</label>
+                <span id="selectedPrice"></span>
+            </div>
+            <!-- <label for="equity" class="equity-class">Equity compensation is available</label>
+            <input type="checkbox" id="equity" name="equity"> -->
+            <p style="margin-left: 0px; color: #999292; font-size:medium;">Candidates can’t see what this job pays, but
+                can search for jobs matching their expected pay scale</p>
+
+            <label for="submission" style="display: inline-block; white-space: nowrap; position:relative;top:-13px">What
+                should a candidate submit when applying for this job?</label>
+            <input type="text" id="submission" name="submission" required>
+            <p style="margin-left: 0px; font-size:medium; color: #999292; position: relative;top: -12px;">Example:
+                “Include your LinkedIn and GitHub profiles.” We now require candidates to apply through the job board
+                only. Do not include any contact information here. Candidates CANNOT attach resumes or other documents,
+                so do not ask for that</p>
+            <h2 style="color :#816894;position: relative; top:4px">Next, tell us about your organization
+            </h2>
+            <label for="employer-name" style="color:#a94442;font-weight: bold;">Employer name</label>
+            <input type="text" id="employer-name" name="employer-name" required>
+            <p style="font-size:medium; color: #999292;position: relative;left: 124px;top: -15px;">The name of the
+                organization where the position is. If your stealth startup doesn't have a name yet, use your own. We do
+                not accept posts from third parties such as recruitment consultants. Such posts may be removed without
+                notice</p>
+            <label for="logo" style="font-weight: bold;">Logo</label>
+            <input type="file" id="logo" name="logo"><br>
+            <p style="font-size:medium; color: #999292; position: relative;right: -122px;top: -3px;">Optional — Your
+                organization’s logo will appear at the top of your post.</p>
+            <label for="url" style="font-weight: bold; position: relative; top:8px;">URL</label>
+            <input type="text" id="url" name="url" style="position: relative;top: 8px" required><br>
+            <p style="font-size:medium; color: #999292; position: relative;left: 124px;">Your organization’s website</p>
+            <label for="email" style="font-weight: bold; position: relative; top: 12px;">Email</label>
+            <input type="email" id="email" name="email" style="position: relative;top:13px" required><br>
+            <p style="font-size:medium; color: #999292;position: relative;left: 124px; top:2px;">This is where we’ll
+                send your confirmation email and all job applications. We recommend using a shared email address such as
+                jobs@your-organization.com. Listings are classified by your email domain, so use a work email address.
+                Your email address will not be revealed to applicants until you respond</p>
+            <label for="collaborators" style="font-weight: bold; position: relative; top: 12px;">Collaborators</label>
+            <input type="text" id="collaborators" name="collaborators" style="position:relative;top:16px;"
+                   placeholder="Search for a user">
+            <p style="font-size:medium; color: #999292;position: relative;left: 124px; top: 6px;">If someone is helping
+                you evaluate candidates, type their names here. They must have a Hasgeek account. They will not receive
+                email notifications — use a shared email address above for that — but they will be able to respond to
+                candidates who apply</p>
+            <label for="recruiters" style="position: relative; top:9px; display: inline-block;white-space: nowrap;"><b>Is
+                it okay for recruiters and other intermediaries to contact you about this post?</b></label><br>
+            <input type="radio" id="recruiters-no" name="recruiters" value="No" required>
+            <label for="recruiters-no">No, it is NOT OK</label><br>
+            <input type="radio" id="recruiters-yes" name="recruiters" value="Yes">
+            <label for="recruiters-yes">Yes, recruiters may contact me</label><br><br><br>
+<button><input  type="submit" value="Review your post..."></button>
+
+        </form>
+    </div>
+    <script>
+        function togglePerksDescription() {
+            var perksCheckbox = document.getElementById("perks");
+            var perksDescription = document.getElementById("perksDescription");
+
+            if (perksCheckbox.checked) {
+                perksDescription.style.display = "block";
+            } else {
+                perksDescription.style.display = "none";
+            }
+        }
+
+    function handlePayChange(selection) {
+      var paymentInfo = document.getElementById('paymentInfo');
+      var priceRange = document.getElementById('priceRange');
+
+      if (selection === 'nothing') {
+        paymentInfo.value = "We'll let candidates know there is no cash compensation";
+        paymentInfo.style.display = 'block';
+        priceRange.style.display = 'none';
+      } else {
+        paymentInfo.style.display = 'none';
+        priceRange.style.display = 'block';
+      }
+    }
+
+    function updatePriceIndicator(value) {
+      var priceIndicator = document.getElementById('priceIndicator');
+      var selectedPrice = document.getElementById('selectedPrice');
+      priceIndicator.style.width = value + '%';
+      selectedPrice.textContent = value;
+    }
+
+    </script>
+</div>
+<div class="footer" style="position:relative;top:119px;">
+    <p align="center" style="position:relative;top:13px;">Hasjob is a service of<a href=""> Hasgeek</a>.Subscribe to<a
+            href=""> the feed</a>or follow<a href="">@hasjob on Twitter </a>to find out when new jobs are posted. </p>
+</div>
+</body>
+</html>
