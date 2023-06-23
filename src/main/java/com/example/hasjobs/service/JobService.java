@@ -85,9 +85,10 @@ public class JobService {
             if (category.length() <= 1) category = null;
         }
         if (category != null) {
+            String filterCategory=category.toLowerCase().trim();
             List<Job> filteredByCategory = new ArrayList<>();
             for (Job job : allJobs) {
-                if (category.equals(job.getCategory().toLowerCase())) {
+                if (filterCategory.equals(job.getCategory().toLowerCase().trim())) {
                     filteredByCategory.add(job);
                 }
             }
