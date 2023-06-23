@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 400px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form-group input {
+      width: 80%;
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+    }
+
+    .button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Update Information</h2>
+
+    <form th:action="@{/update-user}" th:object="${user}" method="post" id="updateForm">
+        <div class="form-group">
+            <input type="hidden" name="userId" th:value="${user.id}">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" th:value="${user.name}" required>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" th:value="${user.email}" required>
+            </div>
+            <button type="submit" class="button">Update</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

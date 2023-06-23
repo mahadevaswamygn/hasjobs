@@ -1,5 +1,4 @@
 package com.example.hasjobs.security;
-
 import com.example.hasjobs.entity.User;
 import com.example.hasjobs.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+
 
 @Service
 public class CustomUserDetails implements UserDetailsService {
@@ -29,5 +29,4 @@ public class CustomUserDetails implements UserDetailsService {
                 Collections.singleton(new SimpleGrantedAuthority(validUser.getRole()))
         );
     }
-
 }

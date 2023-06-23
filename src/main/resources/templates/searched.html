@@ -103,7 +103,16 @@ max-width: 100px;
   margin-left: 332px;
   margin-right: 332px;
 }
-
+.footer {
+  background: #ebe7e4;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+  min-height: 40px;
+  padding: 0px;
+  margin: 0;
+  width: 100vw;
+  max-width: 100%;
+}
 
 
 
@@ -148,11 +157,12 @@ max-width: 100px;
     position: relative;
     tab-size: -20px;
     top: -51px;
-    left: -340px;
+    left: -321px;
 ">
-            <a th:href="@{/login}">
-                <button class="button login">Login</button>
+            <a href="/login-user">
+                <button class="button login" th:if="${loggedInUser}==False">Login</button>
             </a>
+            <a href="/logout"><button  th:if="${loggedInUser}==True">Logout</button></a>
         </div>
 
     </div>
@@ -229,6 +239,9 @@ max-width: 100px;
         </div>
     </div>
 </div>
-
+<div class="footer" style="position:relative; top:6px">
+    <p align="center" style="position:relative;top:11px">Hasjob is a service of<a href=""> Hasgeek</a>.Subscribe to<a
+            href=""> the feed</a>or follow<a href="">@hasjob on Twitter </a>to find out when new jobs are posted. </p>
+</div>
 </body>
 </html>

@@ -163,40 +163,43 @@ max-width: 100px;
     position: relative;
     tab-size: -20px;
     top: -51px;
-    left: -340px;
+    left: -321px;
 ">
-                <a th:href="@{/login}">
-                    <button class="button login">Login</button>
+                <a href="/login-user">
+                    <button class="button login" th:if="${loggedInUser}==False">Login</button>
                 </a>
+                <a href="/logout"><button  th:if="${loggedInUser}==True">Logout</button></a>
             </div>
-            <div style="position:relative;left:-450px;top:5px;">
+            <div style="position:relative;left:-450px;top:16px;">
                 <a th:href="@{/interview-preparation}">
                     <button> Interview Preparation</button>
                 </a>
             </div>
-            <div style="position:relative;left:-292px;top:-16px;">
+            <div style="position:relative;left:-292px;top:-5px;">
                 <a th:href="@{/course}"><button type="submit">Take course</button></a>
+            </div>
+            <div>
             </div>
 
         </div>
         <div class="clearfix">
             <form id="filterForm" th:action="@{/filter}" style="display:flex;justify-content:center;">
-                <div style="position:relative;top:2px;left:-62px;">
-                    <select id="location" name="location" style="width:188px;height:32px">
+                <div style="position:relative;top:2px;left:-110px;">
+                    <select id="location" name="location" style="width:196px;height:32px">
                         <option value="">Location</option>
                         <option th:each="location : ${allLocations}" th:value="${location}"
                                 th:text="${location}"></option>
                     </select>
                 </div>
 
-                <div style="position:relative;top:2px;left:-31px;">
-                    <select id="type" name="type" style="width:188px;height:32px">
+                <div style="position:relative;top:2px;left:-75px;">
+                    <select id="type" name="type" style="width:196px;height:32px">
                         <option value="">Type</option>
                         <option th:each="type : ${allTypes}" th:value="${type}" th:text="${type}"></option>
                     </select>
                 </div>
-                <div style="position:relative;top:2px;left:-1px;">
-                    <select id="category" name="category" style="width:188px;height:32px">
+                <div style="position:relative;top:2px;left:-29px;">
+                    <select id="category" name="category" style="width:196px;height:32px">
                             <option value="">Job Category</option>
                             <option value="programming">Programming</option>
                             <option value="integration">Integration</option>
@@ -211,8 +214,8 @@ max-width: 100px;
                             <option value="Office Administration">Office Administration</option>
                     </select>
                 </div>
-                <div style="position:relative;top:2px;left:24px;">
-                    <select id="pay" name="pay" style="width:188px;height:32px">
+                <div style="position:relative;top:2px;left:8px;">
+                    <select id="pay" name="pay" style="width:196px;height:32px">
                         <option value="">Pay</option>
                         <option th:each="salary : ${allSalary}" th:value="${salary}" th:text="${salary}"></option>
                     </select>

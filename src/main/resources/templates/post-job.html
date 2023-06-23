@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Post a Job</title>
-  <style>
+    <title>Post a Job</title>
+    <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -127,103 +127,170 @@
         }
         .navbara{
 overflow:hidden;
-position:fixed;
+<!--position:fixed;-->
 }
+
 
     </style>
 </head>
 <body>
 <div class="container">
-  <h1>Post a Job</h1>
+    <h1>Post a Job</h1>
 
-  <form method="POST" th:action="@{/post-job}">
-    <p>Hasjob is visited by thousands of developers every month. Posts are valid for 30 days.</p>
-    <p><b>Attention, recruiters:</b> You may NOT use this site to post jobs on behalf of your clients. We accept posts for your own firm only. Please read the <a href="https://hasjob.co/tos">terms of service</a> and ask your clients to list for themselves.</p>
-    <h2 style="color: #816894;">First, tell us about the position</h2>
-    <label for="headline" style= "color:#a94442;font-weight: bold;">Headline:</label>
-    <input type="text" id="headline" name="headline" required><br>
-    <p id="single-line">A single-line summary. This goes to the front page and across the network. <a>A/B test it?</a></p>
-    <label for="type" style="font-weight: bold; position: relative; top:45px">Type:</label>
-    <ul id="type">
-      <input type="radio" id="type-full-time" name="type" value="Full-time employment" required>Full-time employment<br>
-      <input type="radio" id="type-short-term" name="type" value="Short-term contract">Short-term contract<br>
-      <input type="radio" id="type-internship" name="type" value="Internship">Internship<br>
-      <input type="radio" id="type-freelance" name="type" value="Freelance or consulting">Freelance or consulting<br>
-      <input type="radio" id="type-volunteer" name="type" value="Volunteer contributor">Volunteer contributor<br>
-      <input type="radio" id="type-partner" name="type" value="Partner for a venture">Partner for a venture<br>
-    </ul>
+    <form method="POST" th:action="@{/post-job}">
+        <p>Hasjob is visited by thousands of developers every month. Posts are valid for 30 days.</p>
+        <p><b>Attention, recruiters:</b> You may NOT use this site to post jobs on behalf of your clients. We accept
+            posts for your own firm only. Please read the <a href="https://hasjob.co/tos">terms of service</a> and ask
+            your clients to list for themselves.</p>
+        <h2 style="color: #816894;">First, tell us about the position</h2>
+        <label for="headline" style="color:#a94442;font-weight: bold;">Headline:</label>
+        <input type="text" id="headline" name="headline" required><br>
+        <p id="single-line">A single-line summary. This goes to the front page and across the network. <a>A/B test
+            it?</a></p>
+        <label for="type" style="font-weight: bold; position: relative; top:45px">Type:</label>
+        <ul id="type">
+            <input type="radio" id="type-full-time" name="type" value="Full-time employment" required>Full-time
+            employment<br>
+            <input type="radio" id="type-short-term" name="type" value="Short-term contract">Short-term contract<br>
+            <input type="radio" id="type-internship" name="type" value="Internship">Internship<br>
+            <input type="radio" id="type-freelance" name="type" value="Freelance or consulting">Freelance or
+            consulting<br>
+            <input type="radio" id="type-volunteer" name="type" value="Volunteer contributor">Volunteer contributor<br>
+            <input type="radio" id="type-partner" name="type" value="Partner for a venture">Partner for a venture<br>
+        </ul>
 
-    <label for="category" style="font-weight: bold; position: relative; top:45px">Category:</label>
-    <ul id="category">
-      <input type="radio" id="category-programming" name="category" value="Programming" required>Programming<br>
-      <input type="radio" id="category-interaction-design" name="category" value="Interaction Design">Interaction Design<br>
-      <input type="radio" id="category-graphic-design" name="category" value="Graphic Design">Graphic Design<br>
-      <input type="radio" id="category-electronics" name="category" value="Electronics">Electronics<br>
-      <input type="radio" id="category-information-security" name="category" value="Information Security">Information Security<br>
-      <input type="radio" id="category-testing-qa" name="category" value="Testing/Quality Assurance">Testing/Quality Assurance<br>
-      <input type="radio" id="category-it-admin" name="category" value="IT/Systems Administration">IT/Systems Administration<br>
-      <input type="radio" id="category-business-management" name="category" value="Business/Management">Business/Management<br>
-      <input type="radio" id="category-writer-editor" name="category" value="Writer/Editor">Writer/Editor<br>
-      <input type="radio" id="category-customer-support" name="category" value="Customer Support">Customer Support<br>
-      <input type="radio" id="category-mobile" name="category" value="Mobile (iPhone, Android, other)">Mobile (iPhone, Android, other)<br>
-      <input type="radio" id="category-office-admin" name="category" value="Office Administration"> Office Administration<br>
-    </ul>
+        <label for="category" style="font-weight: bold; position: relative; top:45px">Category:</label>
+        <ul id="category">
+            <input type="radio" id="category-programming" name="category" value="Programming" required>Programming<br>
+            <input type="radio" id="category-interaction-design" name="category" value="Interaction Design">Interaction
+            Design<br>
+            <input type="radio" id="category-graphic-design" name="category" value="Graphic Design">Graphic Design<br>
+            <input type="radio" id="category-electronics" name="category" value="Electronics">Electronics<br>
+            <input type="radio" id="category-information-security" name="category" value="Information Security">Information
+            Security<br>
+            <input type="radio" id="category-testing-qa" name="category" value="Testing/Quality Assurance">Testing/Quality
+            Assurance<br>
+            <input type="radio" id="category-it-admin" name="category" value="IT/Systems Administration">IT/Systems
+            Administration<br>
+            <input type="radio" id="category-business-management" name="category" value="Business/Management">Business/Management<br>
+            <input type="radio" id="category-writer-editor" name="category" value="Writer/Editor">Writer/Editor<br>
+            <input type="radio" id="category-customer-support" name="category" value="Customer Support">Customer Support<br>
+            <input type="radio" id="category-mobile" name="category" value="Mobile (iPhone, Android, other)">Mobile
+            (iPhone, Android, other)<br>
+            <input type="radio" id="category-office-admin" name="category" value="Office Administration"> Office
+            Administration<br>
+        </ul>
 
-    <label for="location" class = "location-class" style="font-weight: bold;">Location:</label>
-    <input type="text" id="location" name="location" required>
-    <p style="margin-left: 130px; color: #999292; font-size:medium;">“Bangalore”, “Chennai”, “Pune”, etc or “Anywhere” (without quotes)</p>
+        <label for="location" class="location-class" style="font-weight: bold;">Location:</label>
+        <input type="text" id="location" name="location" required>
+        <p style="margin-left: 130px; color: #999292; font-size:medium;">“Bangalore”, “Chennai”, “Pune”, etc or
+            “Anywhere” (without quotes)</p>
 
-    <label for="relocation" class = "relocation-class">Relocation assistance available:</label>
-    <input type="checkbox" id="relocation" name="relocation"><br><br>
+        <label for="relocation" class="relocation-class">Relocation assistance available:</label>
+        <input type="checkbox" id="relocation" name="relocation"><br><br>
 
-    <label for="description" style="font-weight: bold;position: relative; top:-31px;">Description:</label>
-    <textarea id="description" name="description" rows="5" cols="30" required></textarea>
-    <p style="margin-left: 130px; color: #999292; font-size:medium;">Don’t just describe the job, tell a compelling story for why someone should work for you</p>
-    <label for="perks" class="perks">Job perks are available:</label>
-    <input type="checkbox" id="perks" name="perks"><br>
-    <label for="description" style="font-weight: bold;position: relative; top:-31px;">Description:</label>
-    <textarea id="perksdescription" name="perksdescription" rows="5" cols="30" required></textarea>
+        <label for="description" style="font-weight: bold;position: relative; top:-31px;">Description:</label>
+        <textarea id="description" name="description" rows="5" cols="30" required></textarea>
+        <p style="margin-left: 130px; color: #999292; font-size:medium;">Don’t just describe the job, tell a compelling
+            story for why someone should work for you</p>
+        <label for="perks" class="perks">Job perks are available:</label>
+        <input type="checkbox" id="perks" name="perks"><br>
+        <label for="description" style="font-weight: bold;position: relative; top:-31px;">Description:</label>
+        <textarea id="perksdescription" name="perksdescription" rows="5" cols="30" required></textarea>
 
-    <label for="pay"><b>What does this job pay?:</b></label>
-    <input type="radio" id="pay-nothing" name="pay" value="Nothing" required>
-    <label for="pay-nothing">Nothing</label>
-    <input type="radio" id="pay-one-time" name="pay" value="One-time">
-    <label for="pay-one-time">One-time</label>
-    <input type="radio" id="pay-recurring" name="pay" value="Recurring">
-    <label for="pay-recurring">Recurring</label><br>
-    <input type="number" id="salary" name="salary">
+        <label for="pay"><b>What does this job pay?:</b></label>
+        <input type="radio" id="pay-nothing" name="pay" value="Nothing" required>
+        <label for="pay-nothing">Nothing</label>
+        <input type="radio" id="pay-one-time" name="pay" value="One-time">
+        <label for="pay-one-time">One-time</label>
+        <input type="radio" id="pay-recurring" name="pay" value="Recurring">
+        <label for="pay-recurring">Recurring</label><br>
+        <textarea id="paymentInfo" rows="4" cols="50" disabled></textarea>
+        <
+        <div id="priceRange" style="display: none;">
+            <input type="range" id="priceSlider" min="0" max="100000" step="5000" value="0"
+                   oninput="updatePriceIndicator(this.value)">
+            <div class="price-range">
+                <div id="priceIndicator" class="price-indicator"></div>
+            </div>
+            <br>
+            <div>
+                <label>Selected Price: <span id="displayedPrice">0</span></label>
+                <input type="hidden" id="selectedPrice" name="selectedPrice" value="0"/>
+            </div>
+<!--            <div id="priceIndicator"></div>-->
+        </div>
 
-    <label for="equity" class="equity-class">Equity compensation is available</label>
-    <input type="checkbox" id="equity" name="equity">
-    <p style="margin-left: 130px; color: #999292; font-size:medium;">Candidates can’t see what this job pays, but can search for jobs matching their expected pay scale</p>
+        <label for="equity" class="equity-class">Equity compensation is available</label>
+        <input type="checkbox" id="equity" name="equity">
+        <p style="margin-left: 130px; color: #999292; font-size:medium;">Candidates can’t see what this job pays, but
+            can search for jobs matching their expected pay scale</p>
 
-    <label for="submission" style="display: inline-block; white-space: nowrap; position:relative;top:-13px">What should a candidate submit when applying for this job?:</label>
-    <input type="text" id="submission" name="submission" required>
+        <label for="submission" style="display: inline-block; white-space: nowrap; position:relative;top:-13px">What
+            should a candidate submit when applying for this job?:</label>
+        <input type="text" id="submission" name="submission" required>
 
-    <h2 style="color :#816894;position: relative; top:16px">Next, tell us about your organization
-    </h2>
-    <label for="employer-name" style= "color:#a94442;font-weight: bold;" >Employer name:</label>
-    <input type="text" id="employer-name" name="employer-name" required>
+        <h2 style="color :#816894;position: relative; top:16px">Next, tell us about your organization
+        </h2>
+        <label for="employer-name" style="color:#a94442;font-weight: bold;">Employer name:</label>
+        <input type="text" id="employer-name" name="employer-name" required>
 
-    <label for="logo" style="font-weight: bold;">Logo:</label>
-    <input type="file" id="logo" name="logo"><br>
+        <label for="logo" style="font-weight: bold;">Logo:</label>
+        <input type="file" id="logo" name="logo"><br>
 
-    <label for="url" style="font-weight: bold; position: relative; top:8px;">URL:</label>
-    <input type="text" id="url" name="url" style="position: relative;top: 8px" required><br>
+        <label for="url" style="font-weight: bold; position: relative; top:8px;">URL:</label>
+        <input type="text" id="url" name="url" style="position: relative;top: 8px" required><br>
 
-    <label for="email" style="font-weight: bold; position: relative; top: 12px;">Email:</label>
-    <input type="email" id="email" name="email" style="position: relative;top:13px" required><br>
+        <label for="email" style="font-weight: bold; position: relative; top: 12px;">Email:</label>
+        <input type="email" id="email" name="email" style="position: relative;top:13px" required><br>
 
-    <label for="collaborators" style="font-weight: bold; position: relative; top: 12px;">Collaborators:</label>
-    <input type="text" id="collaborators" name="collaborators" style="position:relative;top:16px;">
-    <label for="recruiters" style="position: relative; top:9px; display: inline-block;white-space: nowrap;">Is it okay for recruiters and other intermediaries to contact you about this post?</label><br>
-    <input type="radio" id="recruiters-no" name="recruiters" value="No" required>
-    <label for="recruiters-no">No, it is NOT OK</label><br>
-    <input type="radio" id="recruiters-yes" name="recruiters" value="Yes">
-    <label for="recruiters-yes">Yes, recruiters may contact me</label><br>
+        <label for="collaborators" style="font-weight: bold; position: relative; top: 12px;">Collaborators:</label>
+        <input type="text" id="collaborators" name="collaborators" style="position:relative;top:16px;">
+        <label for="recruiters" style="position: relative; top:9px; display: inline-block;white-space: nowrap;">Is it
+            okay for recruiters and other intermediaries to contact you about this post?</label><br>
+        <input type="radio" id="recruiters-no" name="recruiters" value="No" required>
+        <label for="recruiters-no">No, it is NOT OK</label><br>
+        <input type="radio" id="recruiters-yes" name="recruiters" value="Yes">
+        <label for="recruiters-yes">Yes, recruiters may contact me</label><br>
 
-    <input type="submit" value="Review your post...">
-  </form>
+        <input type="submit" value="Review your post...">
+    </form>
 </div>
+
+<script>
+        function togglePerksDescription() {
+            var perksCheckbox = document.getElementById("perks");
+            var perksDescription = document.getElementById("perksDescription");
+
+            if (perksCheckbox.checked) {
+                perksDescription.style.display = "block";
+            } else {
+                perksDescription.style.display = "none";
+            }
+        }
+
+    function handlePayChange(selection) {
+      var paymentInfo = document.getElementById('paymentInfo');
+      var priceRange = document.getElementById('priceRange');
+
+      if (selection === 'nothing') {
+        paymentInfo.value = "We'll let candidates know there is no cash compensation";
+        paymentInfo.style.display = 'block';
+        priceRange.style.display = 'none';
+      } else {
+        paymentInfo.style.display = 'none';
+        priceRange.style.display = 'block';
+      }
+    }
+    function updatePriceIndicator(value) {
+  var priceIndicator = document.getElementById('priceIndicator');
+  var selectedPrice = document.getElementById('selectedPrice');
+  var displayedPrice = document.getElementById('displayedPrice');
+  selectedPrice.value = value;
+  displayedPrice.textContent = value;
+  priceIndicator.style.width = value + '%';
+}
+
+</script>
 </body>
 </html>

@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -41,7 +42,13 @@ public class JobController {
     }
 
     @GetMapping(value = "/home")
-    public String home(Model model) {
+    public String home(Model model, Principal principal) {
+        Boolean loggedInUser=null;
+        if (principal != null) {
+            loggedInUser = Boolean.TRUE;
+        } else {
+            loggedInUser = Boolean.FALSE;
+        }
         List<Job> allJobs = jobService.findAllJobs();
         model.addAttribute("allJobs", allJobs);
         List<String> allLocations = jobService.findAllLocations();
@@ -52,6 +59,7 @@ public class JobController {
         model.addAttribute("trendingTechnology", trendingTechnology);
         List<String> allSalary = jobService.findAllSalary();
         model.addAttribute("allSalary", allSalary);
+        model.addAttribute("loggedInUser",loggedInUser);
         return "index";
     }
 
@@ -65,9 +73,8 @@ public class JobController {
                          @RequestParam("description") String description,
                          @RequestParam(value = "perks", required = false) boolean perks,
                          @RequestParam("perksDescription") String perksDescription,
-                         @RequestParam("pay") String paymentType,
+                         @RequestParam("pay") String pay,
                          @RequestParam(value = "paymentInfo", required = false) String paymentInfo,
-                         @RequestParam(value = "selectedPrice", required = false) Integer selectedPrice,
                          @RequestParam(value = "equity", required = false) boolean equity,
                          @RequestParam("submission") String submission,
                          @RequestParam("employer-name") String employerName,
@@ -77,13 +84,11 @@ public class JobController {
                          @RequestParam("collaborators") String collaborators,
                          @RequestParam("recruiters") String recruiters,
                          RedirectAttributes redirectAttributes,
-                         Model model) {
-        if (selectedPrice != null) {
-            System.out.println(selectedPrice.intValue());
-        }
-
+                         Model model,
+                         Principal principal) {
+        User user=userService.findByName(principal.getName());
         Employee employee = new Employee();
-        employee.setName("lahari");
+        employee.setName(principal.getName());
         Employee employee1 = employeeService.save(employee);
         Company company = new Company();
         company.setName(employerName);
@@ -109,14 +114,12 @@ public class JobController {
         job.setLocation(location);
         job.setJobPerks(perksDescription);
         job.setDescription(description);
-        if (selectedPrice != null) {
-            job.setSalary(selectedPrice.intValue());
-        } else {
-            job.setSalary(0);
-        }
+        job.setPay(pay);
+        job.setSalary(45000);
         job.setCompany(company1);
-        job.setPoster("lahari");
+        job.setPoster(principal.getName());
         job.setPostedDate(new Date());
+
         Job newJob = jobService.saveJob(job);
         String[] collaboratorsNames = collaborators.split(",");
         List<Collaborator> collaboratorsList = collaboratorService.getCollaborators(collaboratorsNames);
@@ -136,11 +139,18 @@ public class JobController {
         return "add-job";
     }
 
-    @GetMapping("/search")
-    public String handleSearchRequest(@RequestParam("search") String searchQuery, Model model) {
+    @GetMapping(value = "/search")
+    public String handleSearchRequest(@RequestParam("search") String searchQuery, Model model,Principal principal) {
+        Boolean loggedInUser=null;
+        if (principal != null) {
+            loggedInUser = Boolean.TRUE;
+        } else {
+            loggedInUser = Boolean.FALSE;
+        }
         List<Job> searchedJobs = jobService.searchJobs(searchQuery);
         model.addAttribute("searchedJobs", searchedJobs);
         model.addAttribute("searchQuery", searchQuery);
+        model.addAttribute("loggedInUser",loggedInUser);
         return "searched";
     }
 
@@ -149,7 +159,14 @@ public class JobController {
                          @RequestParam(value = "type", required = false) String type,
                          @RequestParam(value = "category", required = false) String category,
                          @RequestParam(value = "pay", required = false) String pay,
-                         Model model) {
+                         Model model,
+                         Principal principal) {
+        Boolean loggedInUser=null;
+        if (principal != null) {
+            loggedInUser = Boolean.TRUE;
+        } else {
+            loggedInUser = Boolean.FALSE;
+        }
         List<Job> filteredJobs = jobService.filterJobs(location, type, category, pay);
         model.addAttribute("filteredJobs", filteredJobs);
         List<String> allLocations = jobService.findAllLocations();
@@ -158,16 +175,20 @@ public class JobController {
         model.addAttribute("allTypes", allTypes);
         List<String> allSalary = jobService.findAllSalary();
         model.addAttribute("allSalary", allSalary);
+        model.addAttribute("loggedInUser",loggedInUser);
 
         return "filtered";
     }
 
     @GetMapping(value = "/show-job/{id}")
     public String showJob(@PathVariable int id,
-                          Model model) {
+                          Model model,
+                          Principal principal) {
         Job job = jobService.findJobById(id);
         model.addAttribute("job", job);
         model.addAttribute("id", id);
+        User user=userService.findByName(principal.getName());
+        model.addAttribute("user",user);
         return "show-job";
     }
 
@@ -193,5 +214,10 @@ public class JobController {
     @GetMapping(value = "/interview-preparation")
     public String interviewPreparation() {
         return "interview-preparation-page";
+    }
+
+    @GetMapping(value = "//access-denied")
+    public String accessDenied(){
+        return "access-denied";
     }
 }

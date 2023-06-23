@@ -300,15 +300,20 @@
     <p id="resume-linkedin">Resume, Linkedin Profile, Contributions to Opensource projects if any, GitHub link</p>
     <form method="POST" th:action="@{/apply-job/{id}(id=${job.id})}">
     <label for="name" class="name-label">Name</label>
-    <input type="text" id="name" name="name" required>
-    <p id="edit-name">You may edit your name from <a href="">your profile</a></p>
+      <input type="text" id="name" name="name" required th:value="${user.name}" />
+
+
+
+      <p id="edit-name">You may edit your name from <a th:href="@{/edit-profile/{id}(id=${user.id})}">your profile</a></p>
     <label for="email-radio" class="email-label">Email</label>
-    <input type="radio" id="email-radio" name="email" value="email">
-    <label for="add-email" class="email-id">arnab.sanu96@gmail.com</label>
-    <p id="add-email">Add new email addresses from <a href="">your profile</a></p>
+
+      <input type="radio" id="email-radio" name="email" value="email" th:value="${user.email}" />
+      <label for="add-email" class="email-id"></label>
+    <p id="add-email">Add new email addresses from <a th:href="@{/edit-profile/{id}(id=${user.id})}">your profile</a></p>
     <label for="phone" class="phone-label">Phone</label>
-    <input type="text" id="phone" name="phone" required>
-    <p id="phone-reach">A phone number the employer can reach you at</p>
+      <input type="text" id="phone" name="phone" required th:value="${user.phone}" />
+
+      <p id="phone-reach">A phone number the employer can reach you at</p>
     <label for="job-application" class="job-application-label">Job application</label>
     <input type="text" name="description" id="job-application">
     <p>Please provide all details the employer has requested. To add a resume, post it on LinkedIn or host the file on Dropbox and insert the link here</p>

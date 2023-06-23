@@ -1,6 +1,5 @@
 package com.example.hasjobs.security;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,9 +18,6 @@ public class SecurityConfiguration {
     @Autowired
     CustomUserDetails customUserDetails;
 
-    private static final String[] WHITE_LIST_URLS = {
-            "/home", "/","/login", "/register-user"};
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -31,20 +27,23 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests(configure ->
                         configure
-                                .requestMatchers(WHITE_LIST_URLS)
+                                .requestMatchers("/filter","/show-job/{id}","/home","/","/login-user","/login","/create-account","/register-user","/search")
                                 .permitAll()
                                 .anyRequest().authenticated()
                 )
                 .formLogin(form ->
                         form
-                                .loginPage("/login")
+                                .loginPage("/login-user")
                                 .loginProcessingUrl("/authenticateTheUser")
-                                .defaultSuccessUrl("/home", true)
-
+                                .defaultSuccessUrl("/home")
                 ).logout(logout ->
                         logout
                                 .permitAll()
-                ).csrf(AbstractHttpConfigurer::disable);
+                ).csrf(AbstractHttpConfigurer::disable)
+                .exceptionHandling(exception->
+                        exception
+                                .accessDeniedPage("/access-denied"));
+        ;
         return httpSecurity.build();
     }
 }

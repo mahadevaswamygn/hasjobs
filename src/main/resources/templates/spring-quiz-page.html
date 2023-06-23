@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Spring MCQ Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding-left: 250px;
+      padding-right: 250px;
+    }
+
+    h1 {
+      text-align: center;
+
+    }
+
+    .question {
+      padding-left: 100px;
+    }
+
+    .options label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    #submit-button{
+        display: block;
+        margin: 0 auto;
+        height: 28px;
+        width: 84px;
+    }
+    .header{
+        border: 1px solid black;
+        padding: 20px;
+         margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="header">
+  <h1>Spring MCQ Quiz</h1>
+
+  <form class="section" method="POST" th:action="@{/spring/quiz/submit}">
+    <div class="question">
+      <p>1. What is Spring Framework primarily used for?</p>
+      <div class="options">
+        <label>
+          <input type="radio" name="q1" value="a" th:field="${quizAnswer.q1}"/> a) Dependency Injection
+        </label>
+        <label>
+          <input type="radio" name="q1" value="b" th:field="${quizAnswer.q1}"/> b) Aspect-Oriented Programming
+        </label>
+        <label>
+          <input type="radio" name="q1" value="c" th:field="${quizAnswer.q1}"/> c) Inversion of Control
+        </label>
+        <label>
+          <input type="radio" name="q1" value="d" th:field="${quizAnswer.q1}"/> d) All of the above
+        </label>
+      </div>
+    </div>
+
+    <div class="question">
+      <p>2. Which annotation is used to define a bean in Spring?</p>
+      <div class="options">
+        <label>
+          <input type="radio" name="q2" value="a" th:field="${quizAnswer.q2}"/> a) @Component
+        </label>
+        <label>
+          <input type="radio" name="q2" value="b" th:field="${quizAnswer.q2}"/> b) @Bean
+        </label>
+        <label>
+          <input type="radio" name="q2" value="c" th:field="${quizAnswer.q2}"/> c) @Autowired
+        </label>
+        <label>
+          <input type="radio" name="q2" value="d" th:field="${quizAnswer.q2}"/> d) @Configuration
+        </label>
+      </div>
+    </div>
+
+    <div class="question">
+      <p>3. What is the purpose of the Spring Boot framework?</p>
+      <div class="options">
+        <label>
+          <input type="radio" name="q3" value="a" th:field="${quizAnswer.q3}"/> a) To simplify Spring application development
+        </label>
+        <label>
+          <input type="radio" name="q3" value="b" th:field="${quizAnswer.q3}"/> b) To provide embedded server support
+        </label>
+        <label>
+          <input type="radio" name="q3" value="c" th:field="${quizAnswer.q3}"/> c) To configure the application with sensible defaults
+        </label>
+        <label>
+          <input type="radio" name="q3" value="d" th:field="${quizAnswer.q3}"/> d) All of the above
+        </label>
+      </div>
+    </div>
+
+    <div class="question">
+      <p>4. Which Spring module is used for database access and manipulation?</p>
+      <div class="options">
+        <label>
+          <input type="radio" name="q4" value="a" th:field="${quizAnswer.q4}"/> a) Spring MVC
+        </label>
+        <label>
+          <input type="radio" name="q4" value="b" th:field="${quizAnswer.q4}"/> b) Spring Security
+        </label>
+        <label>
+          <input type="radio" name="q4" value="c" th:field="${quizAnswer.q4}"/> c) Spring Data
+        </label>
+        <label>
+          <input type="radio" name="q4" value="d" th:field="${quizAnswer.q4}"/> d) Spring Cloud
+        </label>
+      </div>
+    </div>
+
+    <div class="question">
+      <p>5. Which Spring feature is used for handling cross-cutting concerns?</p>
+      <div class="options">
+        <label>
+          <input type="radio" name="q5" value="a" th:field="${quizAnswer.q5}"/> a) Aspect-Oriented Programming (AOP)
+        </label>
+        <label>
+          <input type="radio" name="q5" value="b" th:field="${quizAnswer.q5}"/> b) IoC (Inversion of Control)
+        </label>
+        <label>
+          <input type="radio" name="q5" value="c" th:field="${quizAnswer.q5}"/> c) Data access using JPA
+        </label>
+        <label>
+          <input type="radio" name="q5" value="d" th:field="${quizAnswer.q5}"/> d) MVC architecture
+        </label>
+      </div>
+    </div>
+
+    <input id="submit-button" type="submit" th:type="submit" value="Submit" />
+  </form>
+</div>
+</body>
+</html>

@@ -3,21 +3,24 @@ package com.example.hasjobs.controller;
 import com.example.hasjobs.entity.User;
 import com.example.hasjobs.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
+@Controller
 public class UserController {
 
     @Autowired
     UserService userService;
+
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    @GetMapping("/login")
+    @GetMapping("/login-user")
     public String login() {
         return "login-page";
     }
@@ -46,5 +49,27 @@ public class UserController {
     @GetMapping(value = "/create-account")
     public String createAccount(){
         return "registration-form";
+    }
+
+    @GetMapping(value = "/edit-profile/{id}")
+    public String editProfile(@PathVariable("id") int userId,
+                              Model model,
+                              Principal principal){
+        User user=userService.findUserById(userId);
+        model.addAttribute("user",user);
+        return "show-user-profile";
+
+    }
+
+    @PostMapping(value = "/update-user")
+    public String updateUser(@ModelAttribute("user")User user,
+                             @RequestParam("userId")int userId,
+                             Principal principal){
+        User user1=userService.findUserById(userId);
+        user1.setEmail(user.getEmail());
+        System.out.println(user.getEmail());
+        user1.setName(user.getName());
+        userService.saveTheUser(user1);
+        return "redirect:/";
     }
 }

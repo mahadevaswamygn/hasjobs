@@ -27,6 +27,7 @@ public class Job {
     private String jobPerks;
     private String poster;
     private int salary;
+    private String pay;
     private Date postedDate;
 
     @ManyToOne(targetEntity = Company.class)

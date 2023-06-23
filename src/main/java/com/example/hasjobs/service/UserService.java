@@ -41,4 +41,13 @@ public class UserService {
     public void saveTheUser(User newUser) {
         userRepository.save(newUser);
     }
+
+    public User findByName(String name) {
+        return userRepository.findByName(name);
+    }
+
+    public User findUserById(int userId) {
+        User user=userRepository.findById(userId).get();
+        return user;
+    }
 }
