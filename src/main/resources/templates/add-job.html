@@ -253,10 +253,16 @@ overflow:hidden;
                 </a>
 
             </div>
-            <div style="position: relative;tab-size: -20px;top: -51px;left: -340px;">
-                <a th:href="@{/login}">
-                    <button class="button login">Login</button>
+            <div style="
+    position: relative;
+    tab-size: -20px;
+    top: -51px;
+    left: -321px;
+">
+                <a href="/login-user">
+                    <button class="button login" th:if="${loggedInUser}==False">Login</button>
                 </a>
+                <a href="/logout"><button  th:if="${loggedInUser}==True">Logout</button></a>
             </div>
 
         </div>
