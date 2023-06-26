@@ -3,10 +3,11 @@
 <head>
   <title>Spring Theory</title>
   <style>
-    body {
+   body {
       font-family: Arial, sans-serif;
       margin: 30px;
-      left-margin:40px;
+      left-margin: 40px;
+      background-color: rgb(231, 230, 228);
     }
 
     h1 {
@@ -22,17 +23,37 @@
     p {
       margin-bottom: 10px;
     }
-    .header{
-        margin-left: 200px;
-        max-width: 900px;
-        border: solid 1px black;
-        padding: 10px;
-    }
-    .quiz-button{
-        margin-left: 540px;
-        position: relative;
-        top: 10px;
-    }
+ .header {
+  margin-left: 430px;
+  max-width: 900px;
+  border: solid 1px black;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0 0 4px rgba(0, 0, 255, 0.5); /* Same shadow on all sides */
+}
+
+
+
+
+ .button-container {
+  text-align: center;
+}
+
+.quiz-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.quiz-button:hover {
+  background-color: #45a049;
+}
+
+
 </style>
 </head>
 <body>
@@ -230,6 +251,10 @@
     Spring Security is widely used in enterprise applications to protect sensitive resources, authenticate users, and enforce security policies. It provides a robust and comprehensive security solution for Java applications.
   </p>
 </div>
-<a th:href="@{/spring-quiz}"> Take Quiz </a>
+<div class="button-container">
+  <a class="quiz-button" href="/spring-quiz">Take Quiz</a>
+</div>
+
+
 </body>
 </html>

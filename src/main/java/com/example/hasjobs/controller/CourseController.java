@@ -3,6 +3,8 @@ package com.example.hasjobs.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.security.Principal;
+
 @Controller
 public class CourseController {
 
@@ -18,12 +20,12 @@ public class CourseController {
 
 
     @GetMapping(value = "/course")
-    public String takeCourse(){
+    public String takeCourse(Principal principal){
         return "course-details";
     }
 
     @GetMapping(value = "/java-course-details")
-    public String javaCourse(){
+    public String javaCourse(Principal principal){
         return "java-course-page";
     }
     @GetMapping(value = "/spring-course")

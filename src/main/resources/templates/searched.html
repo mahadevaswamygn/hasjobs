@@ -102,6 +102,7 @@ max-width: 100px;
 .jobs-display {
   margin-left: 332px;
   margin-right: 332px;
+  height:800px;
 }
 .footer {
   background: #ebe7e4;
@@ -113,6 +114,7 @@ max-width: 100px;
   width: 100vw;
   max-width: 100%;
 }
+
 
 
 
@@ -162,53 +164,59 @@ max-width: 100px;
             <a href="/login-user">
                 <button class="button login" th:if="${loggedInUser}==False">Login</button>
             </a>
-            <a href="/logout"><button  th:if="${loggedInUser}==True">Logout</button></a>
+            <a href="/logout">
+                <button th:if="${loggedInUser}==True">Logout</button>
+            </a>
         </div>
 
     </div>
     <div class="clearfix">
-        <form style="display:flex;justify-content:center;">
-            <div style="position:relative;top:2px;left:-62px;">
+        <form id="filterForm" th:action="@{/filter}" style="display:flex;justify-content:center;">
+            <div style="position:relative;top:5px;left:-126px;">
                 <select id="location" name="location" style="width:188px;height:32px">
                     <option value="">Location</option>
-                    <option value="mysore">Mysore</option>
-                    <option value="bengaluru">Bengaluru</option>
-                    <option value="mumbai">Mumbai</option>
+                    <option th:each="location : ${allLocations}" th:value="${location}" th:text="${location}"></option>
                 </select>
             </div>
-            <div style="position:relative;top:2px;left:-31px;">
-                <select id="type" name="type" style="width:188px;height:32px">
-                    <option value="">Type</option>
-                    <option value="fulltime">Full-time</option>
-                    <option value="parttime">Part-time</option>
-                    <option value="internship">Internship</option>
-                </select>
-            </div>
-            <div style="position:relative;top:2px;left:-1px;">
-                <select id="category" name="category" style="width:188px;height:32px">
-                    <option value="">Category</option>
-                    <option value="programming">Programming</option>
-                    <option value="integration">Integration</option>
-                    <option value="graphicdesign">Graphic Design</option>
-                </select>
-            </div>
-            <div style="position:relative;top:2px;left:24px;">
-                <select id="pay" name="paying" style="width:188px;height:32px">
-                    <option value="">Category</option>
-                    <option value="programming">Programming</option>
-                    <option value="integration">Integration</option>
-                    <option value="graphicdesign">Graphic Design</option>
-                </select>
-            </div>
-            <div style="position:relative;top:2px;left:24px;">
-                <form th:action="@{/search}">
-                    <input type="text" name="search" style="position:relative;left:129px;height:25px"
-                           placeholder="search" th:value="${searchQuery}">
-                </form>
-            </div>
-        </form>
 
+            <div style="position:relative;top:5px;left:-78px;">
+                <select id="type" name="type" style="width:188px;height:32px">
+                    <option value="">Job Type</option>
+                    <option th:each="type : ${allTypes}" th:value="${type}" th:text="${type}"></option>
+                </select>
+            </div>
+            <div style="position:relative;top:5px;left:-24px;">
+                <select id="category" name="category" style="width:188px;height:32px">
+                    <option value="">Job Category</option>
+                    <option value="programming">Programming</option>
+                    <option value="integration">Integration</option>
+                    <option value="graphicdesign">Graphic Design</option>
+                    <option value="Information Security">Information Security</option>
+                    <option value="Testing/Quality Assurance">Testing/Quality Assurance</option>
+                    <option value="IT/Systems Administration">IT/Systems Administration</option>
+                    <option value="Business/Management">Business/Management</option>
+                    <option value="Writer/Editor">Writer/Editor</option>
+                    <option value="Customer Support">Customer Support</option>
+                    <option value="Mobile (iPhone, Android, other)">Mobile (iPhone, Android, other)</option>
+                    <option value="Office Administration">Office Administration</option>
+                </select>
+            </div>
+            <div style="position:relative;top:5px;left:17px;">
+                <select id="pay" name="pay" style="width:188px;height:32px">
+                    <option value="">Pay</option>
+                    <option th:each="salary : ${allSalary}" th:value="${salary}" th:text="${salary}"></option>
+                </select>
+            </div>
+            <button type="submit" id="submitButton" style="display:none;"></button>
+        </form>
     </div>
+    <div style="position:relative;top:2px;left:24px;">
+        <form th:action="@{/search}">
+            <input type="text" name="search" style="position:relative;left:1260px;height:25px;top:-38px;"
+                   placeholder="search" th:value="${searchQuery}">
+        </form>
+    </div>
+
 
     <div id="jobContainer">
 
@@ -231,17 +239,39 @@ max-width: 100px;
                     </div>
                     <div class="job-card-body">
                         <p class="location" style="position:relative;top:-57px;" th:text="${job.location}"></p>
-                        <p class="posted-date" style="position:relative;top:-78px;left:97px"
-                           th:text="${job.postedDate}"></p>
+                        <p class="posted-date" style="position:relative;top:-78px;left:162px"
+                           th:text="${#dates.format(job.postedDate, 'dd MMMM')}"></p>
                     </div>
                 </a>
             </div>
         </div>
     </div>
 </div>
+<script>
+    function autoSubmitForm() {
+        var location = $('#location').val();
+        var type = $('#type').val();
+        var category = $('#category').val();
+        var paying = $('#pay').val();
+
+
+        localStorage.setItem('selectedLocation', location);
+        localStorage.setItem('selectedType', type);
+        localStorage.setItem('selectedCategory', category);
+        localStorage.setItem('selectedPaying', paying);
+
+        $('#submitButton').click();
+    }
+
+    $('#location, #type, #category, #pay').on('change', function() {
+        autoSubmitForm();
+    });
+
+</script>
 <div class="footer" style="position:relative; top:6px">
     <p align="center" style="position:relative;top:11px">Hasjob is a service of<a href=""> Hasgeek</a>.Subscribe to<a
             href=""> the feed</a>or follow<a href="">@hasjob on Twitter </a>to find out when new jobs are posted. </p>
 </div>
+
 </body>
 </html>

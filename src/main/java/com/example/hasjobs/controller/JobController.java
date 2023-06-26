@@ -36,14 +36,11 @@ public class JobController {
     @Autowired
     CollaboratorService collaboratorService;
 
-    @GetMapping(value = "/")
-    public String homePage(){
-        return "redirect:/home";
-    }
 
-    @GetMapping(value = "/home")
+
+    @GetMapping({ "/home", "/"})
     public String home(Model model, Principal principal) {
-        Boolean loggedInUser=null;
+        Boolean loggedInUser = null;
         if (principal != null) {
             loggedInUser = Boolean.TRUE;
         } else {
@@ -59,7 +56,7 @@ public class JobController {
         model.addAttribute("trendingTechnology", trendingTechnology);
         List<String> allSalary = jobService.findAllSalary();
         model.addAttribute("allSalary", allSalary);
-        model.addAttribute("loggedInUser",loggedInUser);
+        model.addAttribute("loggedInUser", loggedInUser);
         return "index";
     }
 
@@ -86,7 +83,7 @@ public class JobController {
                          RedirectAttributes redirectAttributes,
                          Model model,
                          Principal principal) {
-        User user=userService.findByName(principal.getName());
+        User user = userService.findByName(principal.getName());
         Employee employee = new Employee();
         employee.setName(principal.getName());
         Employee employee1 = employeeService.save(employee);
@@ -120,12 +117,18 @@ public class JobController {
         job.setPoster(principal.getName());
         job.setPostedDate(new Date());
 
-        Job newJob = jobService.saveJob(job);
+        //Job newJob = jobService.saveJob(job);
         String[] collaboratorsNames = collaborators.split(",");
         List<Collaborator> collaboratorsList = collaboratorService.getCollaborators(collaboratorsNames);
         job.setCollaboratorsList(collaboratorsList);
-        model.addAttribute("job", newJob);
+        model.addAttribute("job", job);
         return "review";
+    }
+
+    @PostMapping(value = "/save-job")
+    public String jobSava(@RequestParam("job")Job job){
+        jobService.saveJob(job);
+        return "redirect:/home";
     }
 
     @GetMapping(value = "/new")
@@ -140,8 +143,8 @@ public class JobController {
     }
 
     @GetMapping(value = "/search")
-    public String handleSearchRequest(@RequestParam("search") String searchQuery, Model model,Principal principal) {
-        Boolean loggedInUser=null;
+    public String handleSearchRequest(@RequestParam("search") String searchQuery, Model model, Principal principal) {
+        Boolean loggedInUser = null;
         if (principal != null) {
             loggedInUser = Boolean.TRUE;
         } else {
@@ -150,7 +153,14 @@ public class JobController {
         List<Job> searchedJobs = jobService.searchJobs(searchQuery);
         model.addAttribute("searchedJobs", searchedJobs);
         model.addAttribute("searchQuery", searchQuery);
-        model.addAttribute("loggedInUser",loggedInUser);
+        model.addAttribute("loggedInUser", loggedInUser);
+        List<String> allLocations = jobService.findAllLocations();
+        model.addAttribute("allLocations", allLocations);
+        List<String> allTypes = jobService.findAllJobTypes();
+        model.addAttribute("allTypes", allTypes);
+        List<String> allSalary = jobService.findAllSalary();
+        model.addAttribute("allSalary", allSalary);
+
         return "searched";
     }
 
@@ -161,7 +171,7 @@ public class JobController {
                          @RequestParam(value = "pay", required = false) String pay,
                          Model model,
                          Principal principal) {
-        Boolean loggedInUser=null;
+        Boolean loggedInUser = null;
         if (principal != null) {
             loggedInUser = Boolean.TRUE;
         } else {
@@ -175,7 +185,7 @@ public class JobController {
         model.addAttribute("allTypes", allTypes);
         List<String> allSalary = jobService.findAllSalary();
         model.addAttribute("allSalary", allSalary);
-        model.addAttribute("loggedInUser",loggedInUser);
+        model.addAttribute("loggedInUser", loggedInUser);
 
         return "filtered";
     }
@@ -187,8 +197,8 @@ public class JobController {
         Job job = jobService.findJobById(id);
         model.addAttribute("job", job);
         model.addAttribute("id", id);
-        User user=userService.findByName(principal.getName());
-        model.addAttribute("user",user);
+        User user = userService.findByName(principal.getName());
+        model.addAttribute("user", user);
         return "show-job";
     }
 
@@ -217,7 +227,7 @@ public class JobController {
     }
 
     @GetMapping(value = "//access-denied")
-    public String accessDenied(){
+    public String accessDenied() {
         return "access-denied";
     }
 }

@@ -237,7 +237,7 @@ overflow:hidden;
     <div class="container">
         <div class="left-section">
             <div style="position:relative;left:433px;top:2px">
-                <img src="hasjob-logo.png" alt="HasJob Logo" class="logo">
+                <img th:src="@{/images/hasjob-logo.png}" alt="HasJob Logo" class="logo">
             </div>
             <div style="position: relative; left: 432px;top: 1px;width: 60px;">
                 <p class="text" style="color:rgb(223,94,14);font-size:18px; font-weight:bold;">HasJob</p>
@@ -387,7 +387,7 @@ overflow:hidden;
 <div style="position:relative;top:29px;">
     <div class="containera">
         <h1>Post a Job</h1>
-        <form method="POST" th:action="@{/post-job}">
+        <form method="POST" th:action="@{/post-job}" enctype="multipart/form-data">
             <p>Hasjob is visited by thousands of developers every month. Posts are valid for 30 days.</p>
             <p><b>Attention, recruiters:</b> You may NOT use this site to post jobs on behalf of your clients. We accept
                 posts for your own firm only. Please read the <a href="https://hasjob.co/tos">terms of service</a> and

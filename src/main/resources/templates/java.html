@@ -22,17 +22,39 @@
       margin-bottom: 10px;
     }
     .header{
-        margin-left: 200px;
+        margin: 0 auto;
         max-width: 900px;
         border: solid 1px black;
         padding: 10px;
     }
+    .center {
+      display: flex;
+      justify-content: left;
+    }
+      .home-button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      text-decoration: none;
+      font-size: 16px;
+      margin-left: 10px;
+    }
+
+    .home-button:hover {
+      background-color: #45a049;
+    }
   </style>
 </head>
 <body>
-<a th:href="@{/home}"> Home </a>
+<div class="center">
+  <a th:href="@{/home}">
+    <button class="home-button">Home</button>
+  </a>
+</div>
 <div class="header">
-  <h1>Java InterView Question</h1>
+
+<h1>Java InterView Question</h1>
   <div class="question">
     <h2 class="question-title">Question 1: What is Java?</h2>
     <div class="answer">
