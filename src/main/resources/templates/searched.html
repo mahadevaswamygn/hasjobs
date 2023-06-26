@@ -120,6 +120,7 @@ max-width: 100px;
 
 
 
+
     </style>
 
 </head>
@@ -127,7 +128,7 @@ max-width: 100px;
 <div class="container">
     <div class="left-section">
         <div style="position:relative;left:335px;top:2px">
-            <img src="hasjob-logo.png" alt="HasJob Logo" class="logo">
+            <img th:src="@{/images/hasjob-logo.png}" alt="HasJob Logo" class="logo">
         </div>
 
         <div style="
@@ -266,6 +267,7 @@ max-width: 100px;
     $('#location, #type, #category, #pay').on('change', function() {
         autoSubmitForm();
     });
+
 
 </script>
 <div class="footer" style="position:relative; top:6px">

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Java MCQ Quiz</title>
-  <style>
+    <title>Java MCQ Quiz</title>
+    <style>
     body {
       font-family: Arial, sans-serif;
       margin: 20px;
@@ -36,104 +36,105 @@
          margin-bottom: 20px;
     }
 
+
     </style>
 </head>
 <body>
 <form class="section header" method="POST" th:action="@{/quiz/submit}">
-  <h1>Java MCQ Quiz</h1>
-  <div class="question">
-    <p>1. What is the output of the following Java code snippet?</p>
-    <pre><code>int x = 5;
+    <h1>Java MCQ Quiz</h1>
+    <div class="question">
+        <p>1. What is the output of the following Java code snippet?</p>
+        <pre><code>int x = 5;
 System.out.println(++x);</code></pre>
-    <div class="options">
-      <label>
-        <input type="radio" name="q1" value="a" th:field="${quizAnswer.q1}"/> a) 6
-      </label>
-      <label>
-        <input type="radio" name="q1" value="b" th:field="${quizAnswer.q1}"/> b) 5
-      </label>
-      <label>
-        <input type="radio" name="q1" value="c" th:field="${quizAnswer.q1}"/> c) Compilation Error
-      </label>
-      <label>
-        <input type="radio" name="q1" value="d" th:field="${quizAnswer.q1}"/> d) Runtime Error
-      </label>
+        <div class="options">
+            <label>
+                <input type="radio" name="q1" value="a" th:field="${quizAnswer.q1}"/> a) 6
+            </label>
+            <label>
+                <input type="radio" name="q1" value="b" th:field="${quizAnswer.q1}"/> b) 5
+            </label>
+            <label>
+                <input type="radio" name="q1" value="c" th:field="${quizAnswer.q1}"/> c) Compilation Error
+            </label>
+            <label>
+                <input type="radio" name="q1" value="d" th:field="${quizAnswer.q1}"/> d) Runtime Error
+            </label>
+        </div>
     </div>
-  </div>
 
-  <div class="question">
-    <p>2. Which keyword is used to inherit a class in Java?</p>
-    <div class="options">
-      <label>
-        <input type="radio" name="q2" value="a" th:field="${quizAnswer.q2}"/> a) extend
-      </label>
-      <label>
-        <input type="radio" name="q2" value="b" th:field="${quizAnswer.q2}"/> b) implements
-      </label>
-      <label>
-        <input type="radio" name="q2" value="c" th:field="${quizAnswer.q2}"/> c) inherit
-      </label>
-      <label>
-        <input type="radio" name="q2" value="d" th:field="${quizAnswer.q2}"/> d) extends
-      </label>
+    <div class="question">
+        <p>2. Which keyword is used to inherit a class in Java?</p>
+        <div class="options">
+            <label>
+                <input type="radio" name="q2" value="a" th:field="${quizAnswer.q2}"/> a) extend
+            </label>
+            <label>
+                <input type="radio" name="q2" value="b" th:field="${quizAnswer.q2}"/> b) implements
+            </label>
+            <label>
+                <input type="radio" name="q2" value="c" th:field="${quizAnswer.q2}"/> c) inherit
+            </label>
+            <label>
+                <input type="radio" name="q2" value="d" th:field="${quizAnswer.q2}"/> d) extends
+            </label>
+        </div>
     </div>
-  </div>
 
-  <div class="question">
-    <p>3. What is the default value of an uninitialized integer variable in Java?</p>
-    <div class="options">
-      <label>
-        <input type="radio" name="q3" value="a" th:field="${quizAnswer.q3}"/> a) 0
-      </label>
-      <label>
-        <input type="radio" name="q3" value="b" th:field="${quizAnswer.q3}"/> b) 1
-      </label>
-      <label>
-        <input type="radio" name="q3" value="c" th:field="${quizAnswer.q3}"/> c) null
-      </label>
-      <label>
-        <input type="radio" name="q3" value="d" th:field="${quizAnswer.q3}"/> d) Compilation Error
-      </label>
+    <div class="question">
+        <p>3. What is the default value of an uninitialized integer variable in Java?</p>
+        <div class="options">
+            <label>
+                <input type="radio" name="q3" value="a" th:field="${quizAnswer.q3}"/> a) 0
+            </label>
+            <label>
+                <input type="radio" name="q3" value="b" th:field="${quizAnswer.q3}"/> b) 1
+            </label>
+            <label>
+                <input type="radio" name="q3" value="c" th:field="${quizAnswer.q3}"/> c) null
+            </label>
+            <label>
+                <input type="radio" name="q3" value="d" th:field="${quizAnswer.q3}"/> d) Compilation Error
+            </label>
+        </div>
     </div>
-  </div>
 
-  <div class="question">
-    <p>4. Which method is called when an object is created from a class?</p>
-    <div class="options">
-      <label>
-        <input type="radio" name="q4" value="a" th:field="${quizAnswer.q4}"/> a) main
-      </label>
-      <label>
-        <input type="radio" name="q4" value="b" th:field="${quizAnswer.q4}"/> b) start
-      </label>
-      <label>
-        <input type="radio" name="q4" value="c" th:field="${quizAnswer.q4}"/> c) constructor
-      </label>
-      <label>
-        <input type="radio" name="q4" value="d" th:field="${quizAnswer.q4}"/> d) initialize
-      </label>
+    <div class="question">
+        <p>4. Which method is called when an object is created from a class?</p>
+        <div class="options">
+            <label>
+                <input type="radio" name="q4" value="a" th:field="${quizAnswer.q4}"/> a) main
+            </label>
+            <label>
+                <input type="radio" name="q4" value="b" th:field="${quizAnswer.q4}"/> b) start
+            </label>
+            <label>
+                <input type="radio" name="q4" value="c" th:field="${quizAnswer.q4}"/> c) constructor
+            </label>
+            <label>
+                <input type="radio" name="q4" value="d" th:field="${quizAnswer.q4}"/> d) initialize
+            </label>
+        </div>
     </div>
-  </div>
 
-  <div class="question">
-    <p>5. Which of the following is NOT a valid data type in Java?</p>
-    <div class="options">
-      <label>
-        <input type="radio" name="q5" value="a" th:field="${quizAnswer.q5}"/> a) int
-      </label>
-      <label>
-        <input type="radio" name="q5" value="b" th:field="${quizAnswer.q5}"/> b) float
-      </label>
-      <label>
-        <input type="radio" name="q5" value="c" th:field="${quizAnswer.q5}"/> c) boolean
-      </label>
-      <label>
-        <input type="radio" name="q5" value="d" th:field="${quizAnswer.q5}"/> d) string
-      </label>
+    <div class="question">
+        <p>5. Which of the following is NOT a valid data type in Java?</p>
+        <div class="options">
+            <label>
+                <input type="radio" name="q5" value="a" th:field="${quizAnswer.q5}"/> a) int
+            </label>
+            <label>
+                <input type="radio" name="q5" value="b" th:field="${quizAnswer.q5}"/> b) float
+            </label>
+            <label>
+                <input type="radio" name="q5" value="c" th:field="${quizAnswer.q5}"/> c) boolean
+            </label>
+            <label>
+                <input type="radio" name="q5" value="d" th:field="${quizAnswer.q5}"/> d) string
+            </label>
+        </div>
     </div>
-  </div>
 
-  <input id="submit-button" type="submit" th:type="submit" value="Submit"/>
+    <input id="submit-button" type="submit" th:type="submit" value="Submit"/>
 </form>
 </body>
 </html>

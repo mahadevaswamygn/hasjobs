@@ -226,7 +226,7 @@ public class JobController {
         return "interview-preparation-page";
     }
 
-    @GetMapping(value = "//access-denied")
+    @GetMapping(value = "/access-denied")
     public String accessDenied() {
         return "access-denied";
     }

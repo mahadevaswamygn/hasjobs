@@ -121,6 +121,7 @@ max-width: 100px;
 
 }
 
+
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -144,7 +145,8 @@ max-width: 100px;
             <div style="color:purple;position:relative;left:335px;font-weight:bold;">
                 <a th:href="@{/home}"><p class="text">The Hasgeek Job Board</p></a>
             </div>
-            <div style="position:relative;left:1158px;top:2px;"><img th:src="@{/images/apps.png}" alt="app" class="logo"></div>
+            <div style="position:relative;left:1158px;top:2px;"><img th:src="@{/images/apps.png}" alt="app"
+                                                                     class="logo"></div>
 
 
         </div>
@@ -168,7 +170,9 @@ max-width: 100px;
                 <a href="/login-user">
                     <button class="button login" th:if="${loggedInUser}==False">Login</button>
                 </a>
-                <a href="/logout"><button  th:if="${loggedInUser}==True">Logout</button></a>
+                <a href="/logout">
+                    <button th:if="${loggedInUser}==True">Logout</button>
+                </a>
             </div>
             <div style="position:relative;left:-450px;top:16px;">
                 <a th:href="@{/interview-preparation}">
@@ -176,7 +180,9 @@ max-width: 100px;
                 </a>
             </div>
             <div style="position:relative;left:-292px;top:-5px;">
-                <a th:href="@{/course}"><button type="submit">Take course</button></a>
+                <a th:href="@{/course}">
+                    <button type="submit">Take course</button>
+                </a>
             </div>
             <div>
             </div>
@@ -200,18 +206,18 @@ max-width: 100px;
                 </div>
                 <div style="position:relative;top:2px;left:-29px;">
                     <select id="category" name="category" style="width:196px;height:32px">
-                            <option value="">Job Category</option>
-                            <option value="programming">Programming</option>
-                            <option value="integration">Integration</option>
-                            <option value="graphicdesign">Graphic Design</option>
-                            <option value="Information Security">Information Security</option>
-                            <option value="Testing/Quality Assurance">Testing/Quality Assurance</option>
-                            <option value="IT/Systems Administration">IT/Systems Administration</option>
-                            <option value="Business/Management">Business/Management</option>
-                            <option value="Writer/Editor">Writer/Editor</option>
-                            <option value="Customer Support">Customer Support</option>
-                            <option value="Mobile (iPhone, Android, other)" >Mobile (iPhone, Android, other)</option>
-                            <option value="Office Administration">Office Administration</option>
+                        <option value="">Job Category</option>
+                        <option value="programming">Programming</option>
+                        <option value="integration">Integration</option>
+                        <option value="graphicdesign">Graphic Design</option>
+                        <option value="Information Security">Information Security</option>
+                        <option value="Testing/Quality Assurance">Testing/Quality Assurance</option>
+                        <option value="IT/Systems Administration">IT/Systems Administration</option>
+                        <option value="Business/Management">Business/Management</option>
+                        <option value="Writer/Editor">Writer/Editor</option>
+                        <option value="Customer Support">Customer Support</option>
+                        <option value="Mobile (iPhone, Android, other)">Mobile (iPhone, Android, other)</option>
+                        <option value="Office Administration">Office Administration</option>
                     </select>
                 </div>
                 <div style="position:relative;top:2px;left:8px;">
@@ -243,6 +249,7 @@ max-width: 100px;
     $('#location, #type, #category, #pay').on('change', function() {
         autoSubmitForm();
     });
+
 
             </script>
 
@@ -298,6 +305,7 @@ max-width: 100px;
     // Implement your filtering logic here based on the selected criteria
     // Update the displayed jobs accordingly
   }
+
 
 
         </script>

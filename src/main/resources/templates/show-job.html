@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Job Details</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <style>
     .description {
@@ -213,121 +213,135 @@
     .requirements{
         width:604px
     }
+
 </style>
 
 <body>
 <div class="container">
-  <div class="header">
-    <h1 id="title" th:text="${job.headline}"></h1>
-    <p id="post-by">Posted <span th:text="${#dates.format(job.postedDate, 'dd MMMM yyyy')}"></span> by <span th:text="${job.poster}"></span></p>
-  </div>
-  <div class="link">
-    <a href="https://hasjob.co/exceleron.com" style="font-weight: bold;" th:text="${job.company.name}"></a>
-    <a href="https://hasjob.co/?l=bengaluru" th:text="${job.location}"> . </a>
-    <a href="https://www.exceleron.com/" target="_blank" th:text="${job.company.url}"></a>
-    <a href="https://hasjob.co/?t=fulltime" th:text="${job.type}"></a>
-    <a href="https://hasjob.co/?c=edit" th.text="${job.Category}"></a>
-    <br><br>
-  </div>
-  <hr>
-  <div class="description">
-    <div class="navbardescription">
-      <div class="job-description">
-        <p th:text="${job.description}"></p>
-        <p th:text="${job.jobPerks}"></p>
-      </div>
-      <div class="navbar">
-        <div class="navbars">
-          <p id="bookmark-this"><i class="fas fa-bookmark"></i> <a class="navs" href="">Bookmark this</a></p>
-        </div>
-        <div class="navbars">
-          <p id="email-this"><i class="fas fa-envelope"></i> <a class="navs" href="">Email this</a></p>
-        </div>
-        <div class="navbars">
-          <p id="tweet-this"><i class="fab fa-twitter"></i> <a class="navs" href="">Tweet this</a></p>
-        </div>
-        <div class="navbars">
-          <p id="share-facebook"><i class="fab fa-facebook"></i> <a class="navs" href="">Share on Facebook</a></p>
-        </div>
-        <div class="navbars">
-          <p id="report-this"><i class="fas fa-flag"></i> <a class="navs" href="">Report this</a></p>
-        </div>
-      </div>
+    <div class="header">
+        <h1 id="title" th:text="${job.headline}"></h1>
+        <p id="post-by">Posted <span th:text="${#dates.format(job.postedDate, 'dd MMMM yyyy')}"></span> by <span
+                th:text="${job.poster}"></span></p>
     </div>
-    <div class="responsibilities">
-      <h3>Responsibilities</h3>
-      <ul>
-        <li>Write technical documentation for internal or external developer audiences, such as API
-          reference docs and developer guides.</li>
-        <li>Design and organize documentation sets for new APIs and developer products.</li>
-        <li>Edit, clarify, and proofread documents written by others, and coach non-writers on ways to
-          improve their writing skills.</li>
-        <li>Manage complex projects involving diverse stakeholders.</li>
-        <li>Understanding of User Stories and User Journey creation and communication.</li>
-        <li>Understanding and Communicating Business Processes and Flows.</li>
-        <li>You should be able to wear multiple hats, as a product champion and driver of successful product
-          execution.</li>
-      </ul>
-
+    <div class="link">
+        <a href="https://hasjob.co/exceleron.com" style="font-weight: bold;" th:text="${job.company.name}"></a>
+        <a href="https://hasjob.co/?l=bengaluru" th:text="${job.location}"> . </a>
+        <a href="https://www.exceleron.com/" target="_blank" th:text="${job.company.url}"></a>
+        <a href="https://hasjob.co/?t=fulltime" th:text="${job.type}"></a>
+        <a href="https://hasjob.co/?c=edit" th.text="${job.Category}"></a>
+        <br><br>
     </div>
-    <div class="requirements">
-      <h3>Requirements</h3>
-      <ul>
-        <li>BA/BS degree or equivalent practical experience.</li>
-        <li>2 years of relevant experience, such as technical writing, product documentation, or online
-          publishing including experience with writing technical customer-facing materials.</li>
-        <li>Experience with source code written in Java, C++, Perl/Python and/or JavaScript.</li>
-        <li>4 years of relevant work experience, including experience researching and writing excellent
-          documentation for developers (APIs, SDKs, web technologies).</li>
-        <li>Proficiency with HTML and CSS; proficiency in a UNIX environment.</li>
-        <li>Ability to manage multiple competing priorities in a fast-paced, constantly changing
-          environment.</li>
-        <li>Exposure to Product Management, Process Management applications is preferred.</li>
-      </ul>
+    <hr>
+    <div class="description">
+        <div class="navbardescription">
+            <div class="job-description">
+                <p th:text="${job.description}"></p>
+                <p th:text="${job.jobPerks}"></p>
+            </div>
+            <div class="navbar">
+                <div class="navbars">
+                    <p id="bookmark-this"><i class="fas fa-bookmark"></i> <a class="navs" href="">Bookmark this</a></p>
+                </div>
+                <div class="navbars">
+                    <p id="email-this"><i class="fas fa-envelope"></i> <a class="navs" href="">Email this</a></p>
+                </div>
+                <div class="navbars">
+                    <p id="tweet-this"><i class="fab fa-twitter"></i> <a class="navs" href="">Tweet this</a></p>
+                </div>
+                <div class="navbars">
+                    <p id="share-facebook"><i class="fab fa-facebook"></i> <a class="navs" href="">Share on Facebook</a>
+                    </p>
+                </div>
+                <div class="navbars">
+                    <p id="report-this"><i class="fas fa-flag"></i> <a class="navs" href="">Report this</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="responsibilities">
+            <h3>Responsibilities</h3>
+            <ul>
+                <li>Write technical documentation for internal or external developer audiences, such as API
+                    reference docs and developer guides.
+                </li>
+                <li>Design and organize documentation sets for new APIs and developer products.</li>
+                <li>Edit, clarify, and proofread documents written by others, and coach non-writers on ways to
+                    improve their writing skills.
+                </li>
+                <li>Manage complex projects involving diverse stakeholders.</li>
+                <li>Understanding of User Stories and User Journey creation and communication.</li>
+                <li>Understanding and Communicating Business Processes and Flows.</li>
+                <li>You should be able to wear multiple hats, as a product champion and driver of successful product
+                    execution.
+                </li>
+            </ul>
 
+        </div>
+        <div class="requirements">
+            <h3>Requirements</h3>
+            <ul>
+                <li>BA/BS degree or equivalent practical experience.</li>
+                <li>2 years of relevant experience, such as technical writing, product documentation, or online
+                    publishing including experience with writing technical customer-facing materials.
+                </li>
+                <li>Experience with source code written in Java, C++, Perl/Python and/or JavaScript.</li>
+                <li>4 years of relevant work experience, including experience researching and writing excellent
+                    documentation for developers (APIs, SDKs, web technologies).
+                </li>
+                <li>Proficiency with HTML and CSS; proficiency in a UNIX environment.</li>
+                <li>Ability to manage multiple competing priorities in a fast-paced, constantly changing
+                    environment.
+                </li>
+                <li>Exposure to Product Management, Process Management applications is preferred.</li>
+            </ul>
+
+        </div>
+        <div class=" no-position">
+            <p>Number of positions open - 2 </p>
+            <p>Exposure to Product Management, Process Management applications is preferred.</p>
+        </div>
     </div>
-    <div class=" no-position">
-      <p>Number of positions open - 2 </p>
-      <p>Exposure to Product Management, Process Management applications is preferred.</p>
+    <hr>
+    <div class="apply-position">
+        <h2>Apply for this position</h2>
+        <button class="show-instruction-button" onclick="toggleInstructions()">Show instructions</button>
     </div>
-  </div>
-  <hr>
-  <div class="apply-position">
-    <h2>Apply for this position</h2>
-    <button class="show-instruction-button" onclick="toggleInstructions()">Show instructions</button>
-  </div>
-  <div class="instructions" id="instructionsContainer">
-    <p id="resume-linkedin">Resume, Linkedin Profile, Contributions to Opensource projects if any, GitHub link</p>
-    <form method="POST" th:action="@{/apply-job/{id}(id=${job.id})}">
-    <label for="name" class="name-label">Name</label>
-      <input type="text" id="name" name="name" required th:value="${user.name}" />
+    <div class="instructions" id="instructionsContainer">
+        <p id="resume-linkedin">Resume, Linkedin Profile, Contributions to Opensource projects if any, GitHub link</p>
+        <form method="POST" th:action="@{/apply-job/{id}(id=${job.id})}">
+            <label for="name" class="name-label">Name</label>
+            <input type="text" id="name" name="name" required th:value="${user.name}"/>
 
 
+            <p id="edit-name">You may edit your name from <a th:href="@{/edit-profile/{id}(id=${user.id})}">your
+                profile</a></p>
+            <label for="email-radio" class="email-label">Email</label>
 
-      <p id="edit-name">You may edit your name from <a th:href="@{/edit-profile/{id}(id=${user.id})}">your profile</a></p>
-    <label for="email-radio" class="email-label">Email</label>
+            <input type="radio" id="email-radio" name="email" value="email" th:value="${user.email}"/>
+            <label for="add-email" class="email-id"></label>
+            <p id="add-email">Add new email addresses from <a th:href="@{/edit-profile/{id}(id=${user.id})}">your
+                profile</a></p>
+            <label for="phone" class="phone-label">Phone</label>
+            <input type="text" id="phone" name="phone" required th:value="${user.phone}"/>
 
-      <input type="radio" id="email-radio" name="email" value="email" th:value="${user.email}" />
-      <label for="add-email" class="email-id"></label>
-    <p id="add-email">Add new email addresses from <a th:href="@{/edit-profile/{id}(id=${user.id})}">your profile</a></p>
-    <label for="phone" class="phone-label">Phone</label>
-      <input type="text" id="phone" name="phone" required th:value="${user.phone}" />
-
-      <p id="phone-reach">A phone number the employer can reach you at</p>
-    <label for="job-application" class="job-application-label">Job application</label>
-    <input type="text" name="description" id="job-application">
-    <p>Please provide all details the employer has requested. To add a resume, post it on LinkedIn or host the file on Dropbox and insert the link here</p>
-    <input type="checkbox" id="optional" name="optional">
-    <label for="optional" class="optional-class">Optional: sign me up for a better Hasjob experience</label>
-    <p>Hasjob’s maintainers may contact you about new features and can see this application for reference</p>
-    <button class="apply-button" type="submit">Apply</button>
-    </form>
-    <p id="note"><b>Note: </b>Be selective about the jobs you apply for and mindful of the employer’s time. If too many employers report you for wasting their time with an irrelevant application, you will be barred from applying to more jobs. Employers can see how many other jobs you are applying to simultaneously and your status with them, but not which jobs you are applying to.</p>
-  </div>
-  <hr>
-  <div class="reminder">
-    <p>It is <b>NOT OK</b> for recruiters, HR consultants, and other intermediaries to contact this employer</p>
-  </div>
+            <p id="phone-reach">A phone number the employer can reach you at</p>
+            <label for="job-application" class="job-application-label">Job application</label>
+            <input type="text" name="description" id="job-application">
+            <p>Please provide all details the employer has requested. To add a resume, post it on LinkedIn or host the
+                file on Dropbox and insert the link here</p>
+            <input type="checkbox" id="optional" name="optional">
+            <label for="optional" class="optional-class">Optional: sign me up for a better Hasjob experience</label>
+            <p>Hasjob’s maintainers may contact you about new features and can see this application for reference</p>
+            <button class="apply-button" type="submit">Apply</button>
+        </form>
+        <p id="note"><b>Note: </b>Be selective about the jobs you apply for and mindful of the employer’s time. If too
+            many employers report you for wasting their time with an irrelevant application, you will be barred from
+            applying to more jobs. Employers can see how many other jobs you are applying to simultaneously and your
+            status with them, but not which jobs you are applying to.</p>
+    </div>
+    <hr>
+    <div class="reminder">
+        <p>It is <b>NOT OK</b> for recruiters, HR consultants, and other intermediaries to contact this employer</p>
+    </div>
 
 </div>
 <script>
@@ -340,6 +354,7 @@
     instructionsContainer.style.display = "none";
   }
 }
+
 </script>
 </body>
 </html>

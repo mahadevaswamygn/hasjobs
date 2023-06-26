@@ -120,6 +120,7 @@ max-width: 100px;
 
 
 
+
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -164,7 +165,9 @@ max-width: 100px;
             <a href="/login-user">
                 <button class="button login" th:if="${loggedInUser}==False">Login</button>
             </a>
-            <a href="/logout"><button  th:if="${loggedInUser}==True">Logout</button></a>
+            <a href="/logout">
+                <button th:if="${loggedInUser}==True">Logout</button>
+            </a>
         </div>
 
     </div>
@@ -195,7 +198,7 @@ max-width: 100px;
                     <option value="Business/Management">Business/Management</option>
                     <option value="Writer/Editor">Writer/Editor</option>
                     <option value="Customer Support">Customer Support</option>
-                    <option value="Mobile (iPhone, Android, other)" >Mobile (iPhone, Android, other)</option>
+                    <option value="Mobile (iPhone, Android, other)">Mobile (iPhone, Android, other)</option>
                     <option value="Office Administration">Office Administration</option>
                 </select>
             </div>
@@ -259,6 +262,7 @@ max-width: 100px;
     $('#location, #type, #category, #pay').on('change', function() {
         autoSubmitForm();
     });
+
 </script>
 <div class="footer" style="position:relative; top:6px">
     <p align="center" style="position:relative;top:11px">Hasjob is a service of<a href=""> Hasgeek</a>.Subscribe to<a

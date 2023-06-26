@@ -229,6 +229,7 @@ overflow:hidden;
 
 
 
+
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -262,7 +263,9 @@ overflow:hidden;
                 <a href="/login-user">
                     <button class="button login" th:if="${loggedInUser}==False">Login</button>
                 </a>
-                <a href="/logout"><button  th:if="${loggedInUser}==True">Logout</button></a>
+                <a href="/logout">
+                    <button th:if="${loggedInUser}==True">Logout</button>
+                </a>
             </div>
 
         </div>
@@ -284,18 +287,18 @@ overflow:hidden;
                 </div>
                 <div style="position:relative;top:2px;left:-1px;">
                     <select id="category" name="category" style="width:188px;height:32px">
-                            <option value="">Job Category</option>
-                            <option value="programming">Programming</option>
-                            <option value="integration">Integration</option>
-                            <option value="graphicdesign">Graphic Design</option>
-                            <option value="Information Security">Information Security</option>
-                            <option value="Testing/Quality Assurance">Testing/Quality Assurance</option>
-                            <option value="IT/Systems Administration">IT/Systems Administration</option>
-                            <option value="Business/Management">Business/Management</option>
-                            <option value="Writer/Editor">Writer/Editor</option>
-                            <option value="Customer Support">Customer Support</option>
-                            <option value="Mobile (iPhone, Android, other)" >Mobile (iPhone, Android, other)</option>
-                            <option value="Office Administration">Office Administration</option>
+                        <option value="">Job Category</option>
+                        <option value="programming">Programming</option>
+                        <option value="integration">Integration</option>
+                        <option value="graphicdesign">Graphic Design</option>
+                        <option value="Information Security">Information Security</option>
+                        <option value="Testing/Quality Assurance">Testing/Quality Assurance</option>
+                        <option value="IT/Systems Administration">IT/Systems Administration</option>
+                        <option value="Business/Management">Business/Management</option>
+                        <option value="Writer/Editor">Writer/Editor</option>
+                        <option value="Customer Support">Customer Support</option>
+                        <option value="Mobile (iPhone, Android, other)">Mobile (iPhone, Android, other)</option>
+                        <option value="Office Administration">Office Administration</option>
                     </select>
                 </div>
                 <div style="position:relative;top:2px;left:24px;">
@@ -317,6 +320,7 @@ overflow:hidden;
         $('#location, #type, #category, #pay').on('change', function() {
             autoSubmitForm(); // Call the autoSubmitForm function
         });
+
 
             </script>
             <div style="position:relative;top:2px;left:24px;">
@@ -373,6 +377,7 @@ overflow:hidden;
     // Implement your filtering logic here based on the selected criteria
     // Update the displayed jobs accordingly
   }
+
 
 
 
@@ -526,7 +531,7 @@ overflow:hidden;
             <label for="recruiters-no">No, it is NOT OK</label><br>
             <input type="radio" id="recruiters-yes" name="recruiters" value="Yes">
             <label for="recruiters-yes">Yes, recruiters may contact me</label><br><br><br>
-<button><input  type="submit" value="Review your post..."></button>
+            <button><input type="submit" value="Review your post..."></button>
 
         </form>
     </div>
@@ -562,6 +567,7 @@ overflow:hidden;
       priceIndicator.style.width = value + '%';
       selectedPrice.textContent = value;
     }
+
 
     </script>
 </div>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Certificate Template</title>
-  <style>
+    <meta charset="UTF-8">
+    <title>Certificate Template</title>
+    <style>
     /* Certificate styling */
     body {
       font-family: Arial, sans-serif;
@@ -39,18 +39,19 @@
       color: #ff0000; /* Specify the desired color */
       margin: 0 auto; /* Center align the name */
     }
-  </style>
+
+    </style>
 </head>
 <body>
 <div class="certificate">
-  <h1>Certificate of Achievement</h1>
-  <p>This is to certify that</p>
-  <h2 th:text="${name}" style="text-align:center; color:green;"></h2>
-  <p>has successfully completed the training program</p>
-  <p>You are certified by HasJob</p>
-  <div class="download-link">
-    <a th:href="@{/download/certificate}" download="certificate.pdf">Download Certificate</a>
-  </div>
+    <h1>Certificate of Achievement</h1>
+    <p>This is to certify that</p>
+    <h2 th:text="${name}" style="text-align:center; color:green;"></h2>
+    <p>has successfully completed the training program</p>
+    <p>You are certified by HasJob</p>
+    <div class="download-link">
+        <a th:href="@{/download/certificate}" download="certificate.pdf">Download Certificate</a>
+    </div>
 </div>
 </body>
 </html>
