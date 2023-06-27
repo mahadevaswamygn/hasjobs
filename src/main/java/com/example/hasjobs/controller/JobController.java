@@ -36,6 +36,9 @@ public class JobController {
     @Autowired
     CollaboratorService collaboratorService;
 
+    @Autowired
+    ReportService reportService;
+
 
 
     @GetMapping({ "/home", "/"})
@@ -199,5 +202,20 @@ public class JobController {
     @GetMapping(value = "/access-denied")
     public String accessDenied() {
         return "access-denied";
+    }
+
+    @GetMapping(value = "/report-job")
+    public String reportJob(Principal principal,Model model){
+        String username=principal.getName();
+        model.addAttribute("name",username);
+        return "report-job";
+    }
+
+    @PostMapping(value = "/report-job-by-user")
+    public String reportJobByUser(@RequestParam("reportText")String massage,
+                                  Principal principal){
+        User user=userService.findByName(principal.getName());
+        reportService.saveReport(user,massage);
+        return "redirect:/home";
     }
 }
