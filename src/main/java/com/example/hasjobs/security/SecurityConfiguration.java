@@ -27,7 +27,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests(configure ->
                         configure
-                                .requestMatchers("/filter","/show-job/{id}","/home","/","/login-user","/login","/create-account","/register-user","/search","/images/**","/#")
+                                .requestMatchers("/filter","/show-job/{id}","/home","/","/login-user","/login","/create-account","/register-user","/search","/images/**","/#","/search")
                                 .permitAll()
                                 .anyRequest().authenticated()
                 )
