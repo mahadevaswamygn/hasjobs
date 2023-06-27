@@ -161,6 +161,7 @@ public class JobService {
         String[] collaboratorsNames = collaborators.split(",");
         List<Collaborator> collaboratorsList = collaboratorService.getCollaborators(collaboratorsNames);
         job.setCollaboratorsList(collaboratorsList);
-        return job;
+
+        return jobRepository.save(job);
     }
 }
