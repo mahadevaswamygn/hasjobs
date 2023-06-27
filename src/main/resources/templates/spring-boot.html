@@ -27,11 +27,32 @@
         border: solid 1px black;
         padding: 10px;
     }
+       .center {
+      display: flex;
+      justify-content: left;
+    }
+      .home-button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      text-decoration: none;
+      font-size: 16px;
+      margin-left: 10px;
+    }
+
+    .home-button:hover {
+      background-color: #45a049;
+    }
 
     </style>
 </head>
 <body>
-<a th:href="@{/home}"> Home </a>
+<div class="center">
+    <a th:href="@{/home}">
+        <button class="home-button">Home</button>
+    </a>
+</div>
 <div class="header">
     <h1>Spring InterView Question</h1>
     <div class="question">
