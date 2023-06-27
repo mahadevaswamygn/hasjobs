@@ -74,7 +74,7 @@ public class JobController {
                          @RequestParam(value = "paymentInfo", required = false) String paymentInfo,
                          @RequestParam(value = "equity", required = false) boolean equity,
                          @RequestParam("submission") String submission,
-                         @RequestParam("employer-name") String employerName,
+                         @RequestParam("employer-name") String companyName,
                          @RequestParam(value = "logo", required = false) MultipartFile logo,
                          @RequestParam("url") String url,
                          @RequestParam("email") String email,
@@ -87,46 +87,14 @@ public class JobController {
         Employee employee = new Employee();
         employee.setName(principal.getName());
         Employee employee1 = employeeService.save(employee);
-        Company company = new Company();
-        company.setName(employerName);
-        company.setUrl(url);
-        byte[] logoBytes = null;
-        if (logo != null && !logo.isEmpty()) {
-            try {
-                logoBytes = logo.getBytes();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        company.setLogo(logoBytes);
-        List<Employee> employeeList = new ArrayList<>();
-        employeeList.add(employee1);
-        company.setEmployee(employeeList);
-        company.setEmail(email);
-        Company company1 = companyService.save(company);
-        Job job = new Job();
-        job.setHeadline(headline);
-        job.setType(type);
-        job.setCategory(category);
-        job.setLocation(location);
-        job.setJobPerks(perksDescription);
-        job.setDescription(description);
-        job.setPay(pay);
-        job.setSalary(45000);
-        job.setCompany(company1);
-        job.setPoster(principal.getName());
-        job.setPostedDate(new Date());
-
-        //Job newJob = jobService.saveJob(job);
-        String[] collaboratorsNames = collaborators.split(",");
-        List<Collaborator> collaboratorsList = collaboratorService.getCollaborators(collaboratorsNames);
-        job.setCollaboratorsList(collaboratorsList);
+        Company company = companyService.saveCompany(companyName,url,logo,employee1,email);
+        Job job=jobService.saveTheJob(headline,type,category,location,perksDescription,description,pay,company,principal.getName(),collaborators);
         model.addAttribute("job", job);
         return "review";
     }
 
     @PostMapping(value = "/save-job")
-    public String jobSava(@RequestParam("job")Job job){
+    public String jobSava(@ModelAttribute("job")Job job){
         jobService.saveJob(job);
         return "redirect:/home";
     }

@@ -1,14 +1,13 @@
 package com.example.hasjobs.service;
 
+import com.example.hasjobs.entity.Collaborator;
+import com.example.hasjobs.entity.Company;
 import com.example.hasjobs.entity.Job;
 import com.example.hasjobs.repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class JobService {
@@ -16,6 +15,9 @@ public class JobService {
 
     @Autowired
     JobRepository jobRepository;
+
+    @Autowired
+    CollaboratorService collaboratorService;
 
     public Job saveJob(Job job) {
         return jobRepository.save(job);
@@ -85,7 +87,7 @@ public class JobService {
             if (category.length() <= 1) category = null;
         }
         if (category != null) {
-            String filterCategory=category.toLowerCase().trim();
+            String filterCategory = category.toLowerCase().trim();
             List<Job> filteredByCategory = new ArrayList<>();
             for (Job job : allJobs) {
                 if (filterCategory.equals(job.getCategory().toLowerCase().trim())) {
@@ -141,5 +143,24 @@ public class JobService {
             }
         }
         return allSalary;
+    }
+
+    public Job saveTheJob(String headline, String type, String category, String location, String perksDescription, String description, String pay, Company company, String name, String collaborators) {
+        Job job = new Job();
+        job.setHeadline(headline);
+        job.setType(type);
+        job.setCategory(category);
+        job.setLocation(location);
+        job.setJobPerks(perksDescription);
+        job.setDescription(description);
+        job.setPay(pay);
+        job.setSalary(45000);
+        job.setCompany(company);
+        job.setPoster(name);
+        job.setPostedDate(new Date());
+        String[] collaboratorsNames = collaborators.split(",");
+        List<Collaborator> collaboratorsList = collaboratorService.getCollaborators(collaboratorsNames);
+        job.setCollaboratorsList(collaboratorsList);
+        return job;
     }
 }

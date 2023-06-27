@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -218,10 +217,14 @@
 
 <body>
 <div class="container">
-    <!--  <button style="background-color: green;">edit</button>-->
-    <form th:action="@{/save-job}" method="get">
-        <button th:style="'background-color: green;'" type="submit">confirm</button>
+    <form th:action="@{/edit-job}" method="post">
+        <button th:style="'background-color: blue;'" type="submit">Edit</button>
     </form>
+
+    <form th:action="@{/save-job}" method="post">
+        <button type="submit">Confirm</button>
+    </form>
+
     <div class="header">
         <h1 id="title" th:text="${job.headline}"></h1>
         <p id="post-by">Posted <span th:text="${#dates.format(job.postedDate, 'dd MMMM yyyy')}"></span> by <span
@@ -297,7 +300,6 @@
                 </li>
                 <li>Exposure to Product Management, Process Management applications is preferred.</li>
             </ul>
-
         </div>
         <div class=" no-position">
             <p>Number of positions open - 2 </p>

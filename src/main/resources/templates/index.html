@@ -120,6 +120,14 @@ max-width: 100px;
   margin-right: 332px;
 
 }
+   #additionalButtons {
+            display: none;
+        }
+ #additionalButtons {
+            display: none;
+            border: 1px solid #ccc; /* Border style */
+            padding: 10px; /* Padding around the buttons */
+        }
 
 
     </style>
@@ -145,8 +153,35 @@ max-width: 100px;
             <div style="color:purple;position:relative;left:335px;font-weight:bold;">
                 <a th:href="@{/home}"><p class="text">The Hasgeek Job Board</p></a>
             </div>
-            <div style="position:relative;left:1158px;top:2px;"><img th:src="@{/images/apps.png}" alt="app"
-                                                                     class="logo"></div>
+            <div style="position:relative;left:1158px;top:2px;"><a href="#"><img th:src="@{/images/apps.png}" alt="app"
+                                                                                 class="logo"
+                                                                                 onclick="showAdditionalButtons()"/></a>
+            </div>
+            <div id="additionalButtons" style="display:none;position:relative;left:1106px;">
+                <a href="https://hasgeek.com/">
+                    <img th:src="@{/images/hg-banner.png}" alt="Image 1" class="logo"/>
+                </a>
+                <a href="https://hasgeek.tv/">
+                    <img th:src="@{/images/hg_hgtv.png}" alt="Image 2" class="logo"/>
+                </a>
+                <a th:href="@{/home}">
+                    <img th:src="@{/images/hasjob-logo.png}" alt="Image 3" class="logo"/>
+                </a>
+            </div>
+            <script>
+        function showAdditionalButtons() {
+            // Get the additional buttons element by ID
+            var additionalButtons = document.getElementById("additionalButtons");
+
+            // Toggle the display of additional buttons
+            if (additionalButtons.style.display === "none") {
+                additionalButtons.style.display = "block";
+            } else {
+                additionalButtons.style.display = "none";
+            }
+        }
+
+            </script>
 
 
         </div>
@@ -251,6 +286,7 @@ max-width: 100px;
     });
 
 
+
             </script>
 
 
@@ -305,6 +341,7 @@ max-width: 100px;
     // Implement your filtering logic here based on the selected criteria
     // Update the displayed jobs accordingly
   }
+
 
 
 
