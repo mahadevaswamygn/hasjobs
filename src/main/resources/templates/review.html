@@ -221,7 +221,7 @@
 <!--        <button th:style="'background-color: blue;'" type="submit">Edit</button>-->
 <!--    </form>-->
 
-    <form th:action="@{/save-job}" method="post">
+    <form th:action="@{/save-job}" method="post" th:object="${job}">
         <button type="submit">Confirm</button>
     </form>
 
