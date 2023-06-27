@@ -94,9 +94,10 @@ public class JobController {
     }
 
     @PostMapping(value = "/save-job")
-    public String jobSava(@ModelAttribute("job")Job job){
+    public String jobSava(){
         //jobService.saveJob(job);
         //System.out.println(job.getCategory());
+
         return "redirect:/home";
     }
 

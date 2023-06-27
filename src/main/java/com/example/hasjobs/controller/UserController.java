@@ -29,7 +29,7 @@ public class UserController {
         User existingUser = userService.findByEmail(user.getEmail());
         if (existingUser != null) {
             model.addAttribute("emailPresent", "This email Already Present, Please Try with Other email");
-            return "registration";
+            return "registration-form";
         } else {
             if (userService.bothPasswordsSame(user.getPassword(), confirmPassword)) {
                 User newUser = new User();
@@ -40,7 +40,7 @@ public class UserController {
                 userService.saveTheUser(newUser);
             } else {
                 model.addAttribute("passwordMissMatch", "Password is not same, please provide same password");
-                return "registration";
+                return "registration-form";
             }
         }
         return "login-page";
