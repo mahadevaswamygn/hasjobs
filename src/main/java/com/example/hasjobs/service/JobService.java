@@ -154,7 +154,7 @@ public class JobService {
         job.setJobPerks(perksDescription);
         job.setDescription(description);
         job.setPay(pay);
-        job.setSalary(50000);
+        job.setSalary(55000);
         job.setCompany(company);
         job.setPoster(name);
         job.setPostedDate(new Date());
