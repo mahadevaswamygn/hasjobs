@@ -213,14 +213,11 @@
         width:604px
     }
 
+
 </style>
 
 <body>
 <div class="container">
-<!--    <form th:action="@{/edit-job}" method="post">-->
-<!--        <button th:style="'background-color: blue;'" type="submit">Edit</button>-->
-<!--    </form>-->
-
     <form th:action="@{/save-job}" method="post">
         <button type="submit">Confirm</button>
     </form>
@@ -247,20 +244,26 @@
             </div>
             <div class="navbar">
                 <div class="navbars">
-<!--                    <p id="bookmark-this"><i class="fas fa-bookmark"></i> <a class="navs" href="">Bookmark this</a></p>-->
+                    <!--                    <p id="bookmark-this"><i class="fas fa-bookmark"></i> <a class="navs" href="">Bookmark this</a></p>-->
                 </div>
                 <div class="navbars">
-                    <p id="email-this"><i class="fas fa-envelope"></i> <a class="navs" href="https://mail.google.com">Email this</a></p>
+                    <p id="email-this"><i class="fas fa-envelope"></i> <a class="navs" href="https://mail.google.com">Email
+                        this</a></p>
                 </div>
                 <div class="navbars">
-                    <p id="tweet-this"><i class="fab fa-twitter"></i> <a class="navs" href="https://twitter.com/i/flow/login?lang=en">Tweet this</a></p>
+                    <p id="tweet-this"><i class="fab fa-twitter"></i> <a class="navs"
+                                                                         href="https://twitter.com/i/flow/login?lang=en">Tweet
+                        this</a></p>
                 </div>
                 <div class="navbars">
-                    <p id="share-facebook"><i class="fab fa-facebook"></i> <a class="navs" href="https://www.facebook.com/login/">Share on Facebook</a>
+                    <p id="share-facebook"><i class="fab fa-facebook"></i> <a class="navs"
+                                                                              href="https://www.facebook.com/login/">Share
+                        on Facebook</a>
                     </p>
                 </div>
                 <div class="navbars">
-                    <p id="report-this"><i class="fas fa-flag"></i> <a class="navs" th:href="@{/report-job}" method="get">Report this</a></p>
+                    <p id="report-this"><i class="fas fa-flag"></i> <a class="navs" th:href="@{/report-job}"
+                                                                       method="get">Report this</a></p>
                 </div>
             </div>
         </div>
