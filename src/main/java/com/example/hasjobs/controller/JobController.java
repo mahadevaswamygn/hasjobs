@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.io.IOException;
+
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -40,8 +38,7 @@ public class JobController {
     ReportService reportService;
 
 
-
-    @GetMapping({ "/home", "/"})
+    @GetMapping({"/home", "/"})
     public String home(Model model, Principal principal) {
         Boolean loggedInUser = null;
         if (principal != null) {
@@ -90,14 +87,14 @@ public class JobController {
         Employee employee = new Employee();
         employee.setName(principal.getName());
         Employee employee1 = employeeService.save(employee);
-        Company company = companyService.saveCompany(companyName,url,logo,employee1,email);
-        Job job=jobService.saveTheJob(headline,type,category,location,perksDescription,description,pay,company,principal.getName(),collaborators);
-        model.addAttribute("job", job);
-        return "review";
+        Company company = companyService.saveCompany(companyName, url, logo, employee1, email);
+        Job job = jobService.saveTheJob(headline, type, category, location, perksDescription, description, pay, company, principal.getName(), collaborators);
+//        model.addAttribute("job", job);
+        return "redirect:/";
     }
 
     @PostMapping(value = "/save-job")
-    public String jobSava(){
+    public String jobSava() {
         //jobService.saveJob(job);
         //System.out.println(job.getCategory());
 
@@ -205,17 +202,17 @@ public class JobController {
     }
 
     @GetMapping(value = "/report-job")
-    public String reportJob(Principal principal,Model model){
-        String username=principal.getName();
-        model.addAttribute("name",username);
+    public String reportJob(Principal principal, Model model) {
+        String username = principal.getName();
+        model.addAttribute("name", username);
         return "report-job";
     }
 
     @PostMapping(value = "/report-job-by-user")
-    public String reportJobByUser(@RequestParam("reportText")String massage,
-                                  Principal principal){
-        User user=userService.findByName(principal.getName());
-        reportService.saveReport(user,massage);
+    public String reportJobByUser(@RequestParam("reportText") String massage,
+                                  Principal principal) {
+        User user = userService.findByName(principal.getName());
+        reportService.saveReport(user, massage);
         return "redirect:/home";
     }
 }
