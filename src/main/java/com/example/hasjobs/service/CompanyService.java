@@ -16,18 +16,18 @@ public class CompanyService {
 
     @Autowired
     CompanyRepository companyRepository;
+
     public Company save(Company company) {
-        Company company1=companyRepository.findByName(company.getName());
-        if(company1!=null)
-        {
+        Company company1 = companyRepository.findByName(company.getName());
+        if (company1 != null) {
             return company1;
         }
-        Company company2=companyRepository.save(company);
+        Company company2 = companyRepository.save(company);
         return company2;
     }
 
     public Company saveCompany(String companyName, String url, MultipartFile logo, Employee employee1, String email) {
-        Company company=new Company();
+        Company company = new Company();
         company.setName(companyName);
         company.setUrl(url);
         byte[] logoBytes = null;

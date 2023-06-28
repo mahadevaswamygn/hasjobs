@@ -46,6 +46,7 @@ public class QuizAnswerService {
 
         return score;
     }
+
     private int springCalculateScore(QuizAnswer quizAnswer) {
         int score = 0;
         if ("d".equals(quizAnswer.getQ1())) {

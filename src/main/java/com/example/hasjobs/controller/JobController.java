@@ -30,10 +30,6 @@ public class JobController {
 
     @Autowired
     ApplicationService applicationService;
-
-    @Autowired
-    CollaboratorService collaboratorService;
-
     @Autowired
     ReportService reportService;
 
@@ -71,7 +67,6 @@ public class JobController {
                          @RequestParam(value = "perks", required = false) boolean perks,
                          @RequestParam("perksDescription") String perksDescription,
                          @RequestParam("pay") String pay,
-                         @RequestParam(value = "paymentInfo", required = false) String paymentInfo,
                          @RequestParam(value = "equity", required = false) boolean equity,
                          @RequestParam("submission") String submission,
                          @RequestParam("employer-name") String companyName,
@@ -79,25 +74,18 @@ public class JobController {
                          @RequestParam("url") String url,
                          @RequestParam("email") String email,
                          @RequestParam("collaborators") String collaborators,
-                         @RequestParam("recruiters") String recruiters,
-                         RedirectAttributes redirectAttributes,
                          Model model,
                          Principal principal) {
-        User user = userService.findByName(principal.getName());
         Employee employee = new Employee();
         employee.setName(principal.getName());
         Employee employee1 = employeeService.save(employee);
         Company company = companyService.saveCompany(companyName, url, logo, employee1, email);
-        Job job = jobService.saveTheJob(headline, type, category, location, perksDescription, description, pay, company, principal.getName(), collaborators);
-//        model.addAttribute("job", job);
+        jobService.saveTheJob(headline, type, category, location, perksDescription, description, pay, company, principal.getName(), collaborators);
         return "redirect:/";
     }
 
     @PostMapping(value = "/save-job")
     public String jobSava() {
-        //jobService.saveJob(job);
-        //System.out.println(job.getCategory());
-
         return "redirect:/home";
     }
 
@@ -130,7 +118,6 @@ public class JobController {
         model.addAttribute("allTypes", allTypes);
         List<String> allSalary = jobService.findAllSalary();
         model.addAttribute("allSalary", allSalary);
-
         return "searched";
     }
 
@@ -156,7 +143,6 @@ public class JobController {
         List<String> allSalary = jobService.findAllSalary();
         model.addAttribute("allSalary", allSalary);
         model.addAttribute("loggedInUser", loggedInUser);
-
         return "filtered";
     }
 
@@ -183,11 +169,7 @@ public class JobController {
         if (user == null) {
             user = userService.saveUser(name, email, phone);
         }
-        Application application = new Application();
-        application.setJobId(id);
-        application.setUserId(user.getId());
-        application.setDescription(description);
-        applicationService.saveApplication(application);
+        applicationService.saveApplication(id, user.getId(), description);
         return "redirect:/home";
     }
 

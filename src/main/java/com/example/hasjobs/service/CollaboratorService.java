@@ -17,10 +17,10 @@ public class CollaboratorService {
     CollaboratorRepository collaboratorRepository;
 
     public List<Collaborator> getCollaborators(String[] collaboratorsNames) {
-        List<Collaborator> collaborators=new ArrayList<>();
-        for(String name:collaboratorsNames){
-            Collaborator collaborator=collaboratorRepository.findByName(name);
-            if(collaborator!=null){
+        List<Collaborator> collaborators = new ArrayList<>();
+        for (String name : collaboratorsNames) {
+            Collaborator collaborator = collaboratorRepository.findByName(name);
+            if (collaborator != null) {
                 collaborators.add(collaborator);
             }
         }

@@ -11,8 +11,9 @@ public class ReportService {
 
     @Autowired
     ReportRepository reportRepository;
+
     public void saveReport(User user, String massage) {
-        Report report=new Report();
+        Report report = new Report();
         report.setReportMassage(massage);
         report.setUser(user);
         reportRepository.save(report);

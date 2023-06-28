@@ -12,11 +12,11 @@ public class EmployeeService {
     EmployeeRepository employeeRepository;
 
     public Employee save(Employee employee) {
-        Employee employee1=employeeRepository.findByName(employee.getName());
-        if(employee1!=null){
+        Employee employee1 = employeeRepository.findByName(employee.getName());
+        if (employee1 != null) {
             return employee1;
         }
-        Employee employee2= employeeRepository.save(employee);
+        Employee employee2 = employeeRepository.save(employee);
         return employee2;
     }
 }

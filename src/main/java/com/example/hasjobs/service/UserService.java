@@ -10,16 +10,17 @@ public class UserService {
 
     @Autowired
     UserRepository userRepository;
+
     public User findUseByEmail(String email) {
-        User user=userRepository.findByEmail(email);
-        if(user != null){
+        User user = userRepository.findByEmail(email);
+        if (user != null) {
             return user;
         }
         return null;
     }
 
     public User saveUser(String name, String email, String phone) {
-        User user=new User();
+        User user = new User();
         user.setName(name);
         user.setEmail(email);
         user.setPhone(phone);
@@ -27,7 +28,7 @@ public class UserService {
     }
 
     public User findByEmail(String email) {
-        User user=userRepository.findByEmail(email);
+        User user = userRepository.findByEmail(email);
         return user;
     }
 
@@ -47,7 +48,7 @@ public class UserService {
     }
 
     public User findUserById(int userId) {
-        User user=userRepository.findById(userId).get();
+        User user = userRepository.findById(userId).get();
         return user;
     }
 }

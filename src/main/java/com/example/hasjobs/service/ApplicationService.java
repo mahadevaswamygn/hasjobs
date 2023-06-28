@@ -10,7 +10,12 @@ public class ApplicationService {
 
     @Autowired
     ApplicationRepository applicationRepository;
-    public void saveApplication(Application application) {
+
+    public void saveApplication(int id, int userId, String description) {
+        Application application = new Application();
+        application.setJobId(id);
+        application.setUserId(userId);
+        application.setDescription(description);
         applicationRepository.save(application);
     }
 }

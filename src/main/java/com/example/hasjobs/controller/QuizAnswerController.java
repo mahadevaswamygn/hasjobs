@@ -26,20 +26,6 @@ public class QuizAnswerController {
         return "java_question";
     }
 
-    @PostMapping("/quiz/submit")
-    public String submitQuiz(@ModelAttribute("quizAnswer") QuizAnswer quizAnswer, Model model, Principal principal) {
-        quizAnswerService.saveQuizAnswer(quizAnswer);
-        int score = quizAnswer.getScore();
-//        if (score >= 4) {
-//            model.addAttribute("score", score);
-//
-//        }
-//        model.addAttribute("name", principal.getName());
-        model.addAttribute("name",principal.getName());
-        model.addAttribute("score",score);
-        return "success";
-    }
-
     @GetMapping("/spring/quiz")
     public String showSpringQuizPage(@ModelAttribute("quizAnswer") QuizAnswer quizAnswer) {
         return "spring_question";
@@ -49,16 +35,10 @@ public class QuizAnswerController {
     public String submitSpringQuiz(@ModelAttribute("quizAnswer") QuizAnswer quizAnswer, Model model, Principal principal) {
         quizAnswerService.saveSpringQuizAnswer(quizAnswer);
         int score = quizAnswer.getScore();
-//        if (score >= 4) {
-//            model.addAttribute("score", score);
-//            model.addAttribute("name", principal.getName());
-//            return "java-certificate";
-//        }
         model.addAttribute("name",principal.getName());
         model.addAttribute("score",score);
         return "success";
     }
-
 
     @GetMapping("spring-quiz")
     public String springQuiz(@ModelAttribute("quizAnswer") QuizAnswer quizAnswer) {
